@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 1.0.20240321
+  version: 1.0.20240507
   title: GigaLogistics API
   termsOfService: https://platform.gigacloudlogistics.com/docs/
   contact:
@@ -8,28 +8,25 @@ info:
     email: sa-support@gigacloudtech.com
     url: https://platform.gigacloudlogistics.com/docs/
   x-logo:
-    url: >-
-      http://ar-logistics-hk-prod.oss-cn-hongkong.aliyuncs.com/logistics-parent/openapi/DJYClogo1.png
-  description: "# Getting Started\r\n\r\nLearn how to [authenticate yourself to GIGALOGISTICS](https://platform.gigacloudlogistics.com/docs/guide/guides/oauth2.html), and then use our sandbox environment to kick the tires and get familiar with our API. If you run into any problems, then be sure to check the error handling guide for tips.\r\n\r\nHere are some step-by-step **tutorials** to get you started:\r\n\r\n- [Learn how to create your first shipping label](https://platform.gigacloudlogistics.com/docs/guide/shipping-labels/create-label.html)\r\n- [Learn how to list carriers](https://platform.gigacloudlogistics.com/docs/guide/guides/list-carriers.html)\r\n- [Learn how to list carrier services](https://platform.gigacloudlogistics.com/docs/guide/guides/list-carrier-service.html)"
+    url: http://ar-logistics-hk-prod.oss-cn-hongkong.aliyuncs.com/logistics-parent/openapi/DJYClogo1.png
+  description: |-
+    # Getting Started
+
+    Learn how to [authenticate yourself to GIGALOGISTICS](https://platform.gigacloudlogistics.com/docs/guide/guides/oauth2.html), and then use our sandbox environment to kick the tires and get familiar with our API. If you run into any problems, then be sure to check the error handling guide for tips.
+
+    Here are some step-by-step **tutorials** to get you started:
+
+    - [Learn how to create your first shipping label](https://platform.gigacloudlogistics.com/docs/guide/shipping-labels/create-label.html)
+    - [Learn how to list carriers](https://platform.gigacloudlogistics.com/docs/guide/guides/list-carriers.html)
+    - [Learn how to list carrier services](https://platform.gigacloudlogistics.com/docs/guide/guides/list-carrier-service.html)
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
 tags:
   - name: Authentication
-    description: >-
-      To authenticate yourself to GIGALOGISTICS, you need to include an
-      `Authorization` header in each API call. If you don't include a key when
-      making an API request, or if you use an incorrect or expired key, then
-      GIGALOGISTICS will respond with a `401 Unauthorized` error.<br> <br> Learn
-      more about API keys in our [authentication
-      guide](https://platform.gigacloudlogistics.com/docs/guide/guides/oauth2.html).
+    description: To authenticate yourself to GIGALOGISTICS, you need to include an `Authorization` header in each API call. If you don't include a key when making an API request, or if you use an incorrect or expired key, then GIGALOGISTICS will respond with a `401 Unauthorized` error.<br> <br> Learn more about API keys in our [authentication guide](https://platform.gigacloudlogistics.com/docs/guide/guides/oauth2.html).
   - name: Addresses
-    description: >-
-      No matter your shipping volume, failed deliveries and address change
-      surcharges cut into your bottom line and damage perception with customers.
-      Our address validation services ensure your packages make it to the right
-      place the first time. Learn how to leverage our address validation
-      services here.
+    description: No matter your shipping volume, failed deliveries and address change surcharges cut into your bottom line and damage perception with customers. Our address validation services ensure your packages make it to the right place the first time. Learn how to leverage our address validation services here.
   - name: Carriers
     description: carriers
   - name: Carrier Accounts
@@ -39,17 +36,11 @@ tags:
   - name: Rates
     description: rates
   - name: Shipments
-    description: >-
-      Shipments are at the center of the GIGALOGISTICS API. A shipment is the
-      first step in creating a shipping label, or creating a manifest. It's also
-      essential for getting shipping rates.
+    description: Shipments are at the center of the GIGALOGISTICS API. A shipment is the first step in creating a shipping label, or creating a manifest. It's also essential for getting shipping rates.
   - name: Pickup
     description: Pickup request.
   - name: Tracking
-    description: >-
-      Track packages with any one of our supported carrier accounts and create
-      tracking events to keep your customers up to date. Easily integrate
-      real-time tracking information for shipments into your application.
+    description: Track packages with any one of our supported carrier accounts and create tracking events to keep your customers up to date. Easily integrate real-time tracking information for shipments into your application.
   - name: LTL Shipping
     description: Ltl shipping.
   - name: Error Codes
@@ -70,7 +61,229 @@ tags:
        | <br><font face='Verdana' color=#160E0C size=2>**FULL_FAILED_ERROR**</font><br /><br><font face='Georgia' color=#595555 size=3>Batch request completely failed exception.</font><br><br>                                        | <font face='Verdana' color=#160E0C size=2>500 Internal Server Error</font>
        | <br><font face='Verdana' color=#160E0C size=2>**SYS_ERROR**</font><br /><br><font face='Georgia' color=#595555 size=3>Request could not be executed due to an internal server error.</font><br><br>                            | <font face='Verdana' color=#160E0C size=2>500 Internal Server Error</font>
   - name: Version Change History
-    description: "This is the list of changelogs of GIGALOGISTICS new release. You can get the detail information of each version's new features and bug solutions.\r\n\r\n### Version: 1.0.20240321 (current)\r\n\r\n#### Changes\r\n- Update Interface [Validate Address](#tag/Addresses/operation/AdvcStreetLevel)\r\n  - The interface structure has been adjusted from individual to batch, with the addition of the `clientReferenceId` field for matching responses in batch requests. \r\n  - A new rate limiting policy has been implemented for this interface, allowing a maximum of **2400** transactions per minute for each carrierID.\r\n---\r\n\r\n### Version: 1.0.20240122\r\n\r\n#### Changes\r\n- Update Interface [Manual push by Tracking Number](#tag/Tracking/operation/pushTracking)\r\n  - Add webhook callback signature verification functionality. [Click to view details](https://platform.gigacloudlogistics.com/docs/guide/track/create-webhook.html).\r\n- Add the address of the **Development Sandbox Server** environment, used for internal debugging and collaboration among developers. Please note that the tokens and carrierIds for each environment are distinct. Contact us to obtain them.\r\n---\r\n\r\n### Version: 1.0.20240111\r\n\r\n#### Changes\r\n\r\n- [Track Document](#tag/Tracking/operation/getTrackDocument) interface parameter adjustment\r\n  - Adjust the interface parameter request from batch to individual parameter requests.\r\n- Add the address for the US Production Server environment. Please be aware that when connecting to US nodes, a different token is required. Please reach out to us for obtaining the correct one.\r\n---\r\n\r\n### Version: 1.0.2023122801\r\n\r\n#### Changes\r\n\r\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\r\n  - Update field `shipper`, `returnAddress`\r\n  > shipper.contact.companyName, returnAddress.contact.companyName, added maxmum 35 character limit.\r\n- Add Interface [Restart Tracking](#tag/Tracking/operation/restartTrackNum)\r\n    - See the interface description for details\r\n- Add Interface [History Track by Tracking Number](#tag/Tracking/operation/getHistoryTrackInfo)\r\n    - See the interface description for details\r\n- Add Interface [Manual push by Tracking Number](#tag/Tracking/operation/pushTracking)\r\n    - See the interface description for details\r\n- \r\n\r\n---\r\n\r\n### Version: 1.0.2023091402\r\n\r\n#### Changes\r\n\r\n- Add the address of the development sandbox server environment, used for internal debugging and collaboration among developers. Please note that the tokens and carrierIds for each environment are distinct. Contact us to obtain them.\r\n- \r\n\r\n---\r\n\r\n### Version: 1.0.2023083101_Beta\r\n\r\n#### Changes\r\n\r\n- Add Interface [Start Tracking a Package](#tag/Tracking/operation/registerTrackNum)\r\n    - See the interface description for details\r\n\r\n---\r\n\r\n### Version: 1.0.2023082401\r\n\r\n#### Changes\r\n\r\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\r\n    - Update field `shipper`, `recipient`\r\n    > shipper.address.city, shipper.contact.companyName, shipper.contact.personName, recipient.address.city, \r\n    recipient.contact.companyName, recipient.contact.personName added minimum 3 character limit.\r\n\r\n---\r\n\r\n### Version: 1.0.2023072701\r\n\r\n#### Changes\r\n\r\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface adjustment\r\n    - Update field `phoneNumber`\r\n    > Adjust `recipient.contact.phoneNumber` for GEL to be conditional required\r\n    - config timeout\r\n    > config connect timeout with 60s\r\n\r\n---\r\n\r\n### Version: 1.0.2023070601\r\n\r\n#### Changes\r\n\r\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\r\n    - Update field `emailAddress`\r\n    > Adjust `recipient.contact.emailAddress` for DPD_UK to be non-required\r\n\r\n---\r\n\r\n### Version: 1.0.2023062901\r\n\r\n#### Changes\r\n\r\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\r\n    - Update field `shipper`\r\n    > This field is optional when the logistics company is **WHISTL**.\r\n    > Add a description of the restrictions on this field for each logistics company.\r\n    - Update field `recipient`\r\n    > Add a description of the restrictions on this field for each logistics company.\r\n    - Update field `itemTransactionId`\r\n    > Applicable to `itemLines` object Add description information of this field.\r\n    - Update field `dimensions`\r\n    > Applicable to `itemLines` objects Required when the logistics company is **FedEx**.\r\n    - Update field `payor`\r\n    > Applicable to the payor information of the `paymentOption` fields, Adjust the description.\r\n    - Update field `phoneNumber`\r\n    > Applicable to the contact information of the `paymentOption` fields, When the logistics company removes the required verification for **FedEx**.\r\n    - Update field `labelSpecification`\r\n    > Add external link documentation for each logistics company label.\r\n\r\n---\r\n\r\n### Version: 1.0.2023060701\r\n\r\n#### Changes\r\n\r\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\r\n    - Update field `stateProvince`\r\n    > Applicable to the address information of the `paymentOption` fields, When the logistics company removes the required verification for **FedEx**.\r\n    - Update field `accountNumber`\r\n    > Applicable to the payor information of the `paymentOption` fields, When the logistics company is **UPS**, this field must be 6 digits.\r\n\r\n---\r\n\r\n### Version: 1.0.2023052501\r\n\r\n#### Changes\r\n\r\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\r\n    - Add new field `instructions`\r\n    > Applicable to the address information of the `shipper.address`fields, only applicable to GLS. \r\n    - Add new field `instructions`\r\n    > Applicable to the address information of the `recipient.address` fields, only applicable to DPD_DE, DPD_UK, GLS. \r\n\r\n---\r\n\r\n### Version: 1.0.2023051901\r\n\r\n#### Changes\r\n\r\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\r\n    - Update field `streetLine2`\r\n    > Adjust `shipper.streetLine2` and `recipient.streetLine2` for DPD_DE to be non-required\r\n\r\n---\r\n\r\n### Version: 1.0.2023051601\r\n\r\n#### Changes\r\n\r\n- Adjust version number information.\r\n- Modify the address of the `sandbox environment` and add the address of the `pre-release environment`.\r\n\r\n---\r\n\r\n### Version: 1.0.2023051101\r\n\r\n#### Changes\r\n\r\n- Add Interface [Create Shipments asynchronously](#tag/Shipments/operation/CreateShipmentsAsync)\r\n    - See the interface description for details\r\n- Add Interface [Retrieve Async Shipments Result](#tag/Shipments/operation/AsyncRetrieveShipmentsResult)\r\n    - See the interface description for details\r\n\r\n- [Create Shipments](#tag/Shipments/operation/createShipment) Interface parameter verification description adjustment\r\n    - Update field `phoneNumber`\r\n    > Modify the description of this field. When the operator is `FedEx`, add a special case description. For details, please refer to the interface document. The main scope of change `shipper`, `recipient`, `payor` objects.\r\n    - Update field `customerReference`\r\n    > Modify the restrictions of each logistics company for ref1~ref5 in this field.\r\n\r\n---\r\n\r\n### Version: 1.0.2023040301\r\n\r\n#### Changes\r\n\r\n- Add Interface [Track Document](#tag/Tracking/operation/getTrackDocument)\r\n    - See the interface description for details\r\n\r\n---\r\n\r\n### Version: 1.0.2023032101\r\n\r\n#### Changes\r\n\r\n- [Create Shipments](#tag/Shipments/operation/createShipment) Interface parameter verification description adjustment\r\n    - Update field `paymentOption`\r\n    > Modify the verification information when using non-`SENDER` payment when the carrier is `FedEx` or `UPS`.\r\n    - Added the description information of the specific verification rules of each logistics company, supplemented additional auxiliary information about fields such as `serviceType`, `weight`, `dimensions`, `declaredInfo`, etc.\r\n\r\n---\r\n\r\n### Version: 1.0.2023031401\r\n\r\n#### Changes\r\n\r\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\r\n    - Add new field `streetLine3`\r\n    > Applicable to the address information of the `shipper`, `recipient`, `paymentOption`, and `returnAddress` fields, only applicable to FedEx, UPS. \r\n    - Update field `stateProvince`\r\n    > Applicable to the address information of the `shipper`, `recipient`, `paymentOption`, and `returnAddress` fields, Required when the carrier is FedEx, UPS, optional in other cases.\r\n\r\n- [Create Warehouse](#tag/Warehouses/operation/createWarehouse) interface parameter adjustment\r\n    - update field `stateProvince`\r\n    > Applicable to `originAddressre`, `returnAddress` field address information, only required when the country of the address is US."
+    description: |-
+      This is the list of changelogs of GIGALOGISTICS new release. You can get the detail information of each version's new features and bug solutions.
+
+      ### Version: 1.0.20240507 (current)
+
+      ### Changes
+      - Add Interface  [Create Shipment Async](#tag/LTL-Shipping/operation/createShipmentAsync)
+        - See the interface description for details
+      - Add Interface  [Retrieve Async Shipments Result](#tag/LTL-Shipping/operation/LTLAsyncRetrieveShipmentsResult)
+        - See the interface description for details
+      - Add Interface  [Pickup Request](#tag/LTL-Shipping/operation/pickup)
+        - See the interface description for details
+      ---
+
+      ### Version: 1.0.20240315_Beta
+
+      #### Changes
+      - Update Interface [Validate Address](#tag/Addresses/operation/AdvcStreetLevel)
+        - The interface structure has been adjusted from individual to batch, with the addition of the `clientReferenceId` field for matching responses in batch requests. 
+        - A new rate limiting policy has been implemented for this interface, allowing a maximum of **2400** transactions per minute for each carrierID.
+      ---
+
+      ### Version: 1.0.20240122
+
+      #### Changes
+      - Update Interface [Manual push by Tracking Number](#tag/Tracking/operation/pushTracking)
+        - Add webhook callback signature verification functionality. [Click to view details](https://platform.gigacloudlogistics.com/docs/guide/track/create-webhook.html).
+      - Add the address of the **Development Sandbox Server** environment, used for internal debugging and collaboration among developers. Please note that the tokens and carrierIds for each environment are distinct. Contact us to obtain them.
+      ---
+
+      ### Version: 1.0.20240111
+
+      #### Changes
+
+      - [Track Document](#tag/Tracking/operation/getTrackDocument) interface parameter adjustment
+        - Adjust the interface parameter request from batch to individual parameter requests.
+      - Add the address for the US Production Server environment. Please be aware that when connecting to US nodes, a different token is required. Please reach out to us for obtaining the correct one.
+      ---
+
+      ### Version: 1.0.2023122801
+
+      #### Changes
+
+      - [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment
+        - Update field `shipper`, `returnAddress`
+        > shipper.contact.companyName, returnAddress.contact.companyName, added maxmum 35 character limit.
+      - Add Interface [Restart Tracking](#tag/Tracking/operation/restartTrackNum)
+          - See the interface description for details
+      - Add Interface [History Track by Tracking Number](#tag/Tracking/operation/getHistoryTrackInfo)
+          - See the interface description for details
+      - Add Interface [Manual push by Tracking Number](#tag/Tracking/operation/pushTracking)
+          - See the interface description for details
+      - 
+
+      ---
+
+      ### Version: 1.0.2023091402
+
+      #### Changes
+
+      - Add the address of the development sandbox server environment, used for internal debugging and collaboration among developers. Please note that the tokens and carrierIds for each environment are distinct. Contact us to obtain them.
+      - 
+
+      ---
+
+      ### Version: 1.0.2023083101_Beta
+
+      #### Changes
+
+      - Add Interface [Start Tracking a Package](#tag/Tracking/operation/registerTrackNum)
+          - See the interface description for details
+
+      ---
+
+      ### Version: 1.0.2023082401
+
+      #### Changes
+
+      - [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment
+          - Update field `shipper`, `recipient`
+          > shipper.address.city, shipper.contact.companyName, shipper.contact.personName, recipient.address.city, 
+          recipient.contact.companyName, recipient.contact.personName added minimum 3 character limit.
+
+      ---
+
+      ### Version: 1.0.2023072701
+
+      #### Changes
+
+      - [Create Shipments](#tag/Shipments/operation/createShipment) interface adjustment
+          - Update field `phoneNumber`
+          > Adjust `recipient.contact.phoneNumber` for GEL to be conditional required
+          - config timeout
+          > config connect timeout with 60s
+
+      ---
+
+      ### Version: 1.0.2023070601
+
+      #### Changes
+
+      - [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment
+          - Update field `emailAddress`
+          > Adjust `recipient.contact.emailAddress` for DPD_UK to be non-required
+
+      ---
+
+      ### Version: 1.0.2023062901
+
+      #### Changes
+
+      - [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment
+          - Update field `shipper`
+          > This field is optional when the logistics company is **WHISTL**.
+          > Add a description of the restrictions on this field for each logistics company.
+          - Update field `recipient`
+          > Add a description of the restrictions on this field for each logistics company.
+          - Update field `itemTransactionId`
+          > Applicable to `itemLines` object Add description information of this field.
+          - Update field `dimensions`
+          > Applicable to `itemLines` objects Required when the logistics company is **FedEx**.
+          - Update field `payor`
+          > Applicable to the payor information of the `paymentOption` fields, Adjust the description.
+          - Update field `phoneNumber`
+          > Applicable to the contact information of the `paymentOption` fields, When the logistics company removes the required verification for **FedEx**.
+          - Update field `labelSpecification`
+          > Add external link documentation for each logistics company label.
+
+      ---
+
+      ### Version: 1.0.2023060701
+
+      #### Changes
+
+      - [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment
+          - Update field `stateProvince`
+          > Applicable to the address information of the `paymentOption` fields, When the logistics company removes the required verification for **FedEx**.
+          - Update field `accountNumber`
+          > Applicable to the payor information of the `paymentOption` fields, When the logistics company is **UPS**, this field must be 6 digits.
+
+      ---
+
+      ### Version: 1.0.2023052501
+
+      #### Changes
+
+      - [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment
+          - Add new field `instructions`
+          > Applicable to the address information of the `shipper.address`fields, only applicable to GLS. 
+          - Add new field `instructions`
+          > Applicable to the address information of the `recipient.address` fields, only applicable to DPD_DE, DPD_UK, GLS. 
+
+      ---
+
+      ### Version: 1.0.2023051901
+
+      #### Changes
+
+      - [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment
+          - Update field `streetLine2`
+          > Adjust `shipper.streetLine2` and `recipient.streetLine2` for DPD_DE to be non-required
+
+      ---
+
+      ### Version: 1.0.2023051601
+
+      #### Changes
+
+      - Adjust version number information.
+      - Modify the address of the `sandbox environment` and add the address of the `pre-release environment`.
+
+      ---
+
+      ### Version: 1.0.2023051101
+
+      #### Changes
+
+      - Add Interface [Create Shipments asynchronously](#tag/Shipments/operation/CreateShipmentsAsync)
+          - See the interface description for details
+      - Add Interface [Retrieve Async Shipments Result](#tag/Shipments/operation/AsyncRetrieveShipmentsResult)
+          - See the interface description for details
+
+      - [Create Shipments](#tag/Shipments/operation/createShipment) Interface parameter verification description adjustment
+          - Update field `phoneNumber`
+          > Modify the description of this field. When the operator is `FedEx`, add a special case description. For details, please refer to the interface document. The main scope of change `shipper`, `recipient`, `payor` objects.
+          - Update field `customerReference`
+          > Modify the restrictions of each logistics company for ref1~ref5 in this field.
+
+      ---
+
+      ### Version: 1.0.2023040301
+
+      #### Changes
+
+      - Add Interface [Track Document](#tag/Tracking/operation/getTrackDocument)
+          - See the interface description for details
+
+      ---
+
+      ### Version: 1.0.2023032101
+
+      #### Changes
+
+      - [Create Shipments](#tag/Shipments/operation/createShipment) Interface parameter verification description adjustment
+          - Update field `paymentOption`
+          > Modify the verification information when using non-`SENDER` payment when the carrier is `FedEx` or `UPS`.
+          - Added the description information of the specific verification rules of each logistics company, supplemented additional auxiliary information about fields such as `serviceType`, `weight`, `dimensions`, `declaredInfo`, etc.
+
+      ---
+
+      ### Version: 1.0.2023031401
+
+      #### Changes
+
+      - [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment
+          - Add new field `streetLine3`
+          > Applicable to the address information of the `shipper`, `recipient`, `paymentOption`, and `returnAddress` fields, only applicable to FedEx, UPS. 
+          - Update field `stateProvince`
+          > Applicable to the address information of the `shipper`, `recipient`, `paymentOption`, and `returnAddress` fields, Required when the carrier is FedEx, UPS, optional in other cases.
+
+      - [Create Warehouse](#tag/Warehouses/operation/createWarehouse) interface parameter adjustment
+          - update field `stateProvince`
+          > Applicable to `originAddressre`, `returnAddress` field address information, only required when the country of the address is US.
 servers:
   - url: http://sit.gateway.orsd.tech/gw
     description: Development Sandbox Server
@@ -88,10 +301,7 @@ paths:
       tags:
         - Authentication
       summary: Api Authorization
-      description: >-
-        Use this endpoint to request the OAuth token (bearer token) to authorize
-        your application to access GigaCloud resources. You can pass this bearer
-        token in your subsequent individual GigaCloud API endpoint requests.
+      description: Use this endpoint to request the OAuth token (bearer token) to authorize your application to access GigaCloud resources. You can pass this bearer token in your subsequent individual GigaCloud API endpoint requests.
       operationId: apiAuthorization
       security: []
       parameters:
@@ -99,10 +309,7 @@ paths:
           in: header
           required: true
           schema:
-            description: >-
-              This is used to indicate the media type of the resource. The media
-              type is a string sent along with the file indicating format of the
-              file.
+            description: This is used to indicate the media type of the resource. The media type is a string sent along with the file indicating format of the file.
             type: string
             example: application/x-www-form-urlencoded
       requestBody:
@@ -129,18 +336,14 @@ paths:
       tags:
         - Addresses
       summary: Address Finder
-      description: >-
-        The address is automatically completed according to the keyword query.
-        currently only supports the United States.
+      description: The address is automatically completed according to the keyword query. currently only supports the United States.
       operationId: finderAddressByKeyord
       security: []
       parameters:
         - $ref: '#/components/parameters/Authorization'
         - name: countryCode
           in: path
-          description: >-
-            This is the two-letter country code. [Find more info
-            here](https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html)
+          description: This is the two-letter country code. [Find more info here](https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html)
           required: true
           schema:
             type: string
@@ -195,10 +398,7 @@ paths:
       tags:
         - Addresses
       summary: Validate Postal
-      description: >-
-        Use this endpoint to validate postal codes and service commitments.
-        Supports city, postal, country and Origin-Destination related lookups
-        and validations. Currently only Fedex supports this feature.
+      description: Use this endpoint to validate postal codes and service commitments. Supports city, postal, country and Origin-Destination related lookups and validations. Currently only Fedex supports this feature.
       operationId: AdvcZipcodeLevel
       security: []
       parameters:
@@ -251,11 +451,8 @@ paths:
       tags:
         - Addresses
       summary: Validate Address
-      description: >-
-        Use this endpoint to get address resolution details. These details are
-        the outcome of validatation and resolution of the input address. An
-        address is stated as resolved when the input address matches the known
-        reference data. Currently only Fedex supports this feature.
+      description: |-
+        Use this endpoint to get address resolution details. These details are the outcome of validatation and resolution of the input address. An address is stated as resolved when the input address matches the known reference data. Currently only Fedex supports this feature.
 
          > **Note:** This interface imposes a throttling limit of 2400 requests per minute for a single carrierId.
       operationId: AdvcStreetLevel
@@ -587,11 +784,8 @@ paths:
       tags:
         - Rates
       summary: Get Shipping Rates
-      description: >-
-        Make sure you ship as cost-effectively as possible by quickly comparing
-        rates using the GIGALOGISTICS Rates API.  As long as you have the
-        carrier connected to your account, you'll be able to see and compare
-        different rates and services.
+      description: |-
+        Make sure you ship as cost-effectively as possible by quickly comparing rates using the GIGALOGISTICS Rates API.  As long as you have the carrier connected to your account, you'll be able to see and compare different rates and services.
          > Currently this interface is only applicable to Fedex.
       operationId: getShippingRates
       security: []
@@ -651,10 +845,7 @@ paths:
       tags:
         - LTL Shipping
       summary: Request a Spot Quote
-      description: >-
-        This API endpoint allows you to obtain a spot price quote for a
-        shipment. Spot quotes are typically discounted rates based on excess
-        carrier capacity vs contractual rates.
+      description: This API endpoint allows you to obtain a spot price quote for a shipment. Spot quotes are typically discounted rates based on excess carrier capacity vs contractual rates.
       operationId: requestSpotQuote
       security: []
       parameters:
@@ -663,10 +854,7 @@ paths:
           in: header
           required: true
           schema:
-            description: >-
-              This element allows you to assign a unique identifier to your
-              transaction. This element is also returned in the reply and helps
-              you match the request to the reply.
+            description: This element allows you to assign a unique identifier to your transaction. This element is also returned in the reply and helps you match the request to the reply.
             type: string
             minLength: 1
             maxLength: 50
@@ -714,71 +902,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/503ErrorResp'
-  /cloud-ship-service/v1/ltl/shipment:
-    post:
-      tags:
-        - LTL Shipping
-      summary: Create Shipment
-      description: This API endpoint is used to book a shipment.
-      operationId: ltlCreateShipment
-      security: []
-      parameters:
-        - $ref: '#/components/parameters/Authorization'
-        - name: transactionId
-          in: header
-          required: true
-          schema:
-            description: >-
-              This element allows you to assign a unique identifier to your
-              transaction. This element is also returned in the reply and helps
-              you match the request to the reply.
-            type: string
-            minLength: 1
-            maxLength: 50
-            example: XXXX_XXX123XXXXX
-      requestBody:
-        content:
-          application/json:
-            schema:
-              allOf:
-                - $ref: '#/components/schemas/ltl_shipment_request'
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ltl_success_response'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400ErrorResp'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/401ErrorResp'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/403ErrorResp'
-        '500':
-          description: Failure
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/500ErrorResp'
-        '503':
-          description: Service Unavailable
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ErrorResp'
   /cloud-ship-service/v1/ltl/shipment/async:
     post:
       tags:
@@ -793,10 +916,7 @@ paths:
           in: header
           required: true
           schema:
-            description: >-
-              This element allows you to assign a unique identifier to your
-              transaction. This element is also returned in the reply and helps
-              you match the request to the reply.
+            description: This element allows you to assign a unique identifier to your transaction. This element is also returned in the reply and helps you match the request to the reply.
             type: string
             minLength: 1
             maxLength: 50
@@ -849,10 +969,7 @@ paths:
       tags:
         - LTL Shipping
       summary: Retrieve Async Shipments Result
-      description: >-
-        This endpoint helps you to process confirmed shipments asynchronously
-        and produce results based on unique id. Cooperate `Create Shipments`
-        interface used together.
+      description: This endpoint helps you to process confirmed shipments asynchronously and produce results based on unique id. Cooperate `Create Shipments Async` interface used together.
       operationId: LTLAsyncRetrieveShipmentsResult
       security: []
       parameters:
@@ -864,20 +981,16 @@ paths:
               type: array
               items:
                 type: string
-                description: >-
-                  The unique identifier generated by the `Create Shipments`
-                  interface.
+                description: The unique identifier generated by the `Create Shipments Async` interface.
                 example: 6887945876680704
-        description: >-
-          A collection of unique identifiers generated by the `Create Shipments`
-          interface. The maximum acceptable upper line is a group of 40.
+        description: A collection of unique identifiers generated by the `Create Shipments Async` interface. The maximum acceptable upper line is a group of 40.
       responses:
         '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ltl_success_response'
+                $ref: '#/components/schemas/ltl_shipment_async_result_response'
         '400':
           description: Bad Request
           content:
@@ -928,10 +1041,7 @@ paths:
           in: header
           required: true
           schema:
-            description: >-
-              This element allows you to assign a unique identifier to your
-              transaction. This element is also returned in the reply and helps
-              you match the request to the reply.
+            description: This element allows you to assign a unique identifier to your transaction. This element is also returned in the reply and helps you match the request to the reply.
             type: string
             minLength: 1
             maxLength: 50
@@ -984,10 +1094,7 @@ paths:
       tags:
         - Shipments
       summary: Create Shipments
-      description: >-
-        Shipments are at the center of the LogisticsParent API. A shipment is
-        the first step in creating a shipping label, or creating a manifest.
-        It's also essential for getting shipping rates.
+      description: Shipments are at the center of the LogisticsParent API. A shipment is the first step in creating a shipping label, or creating a manifest. It's also essential for getting shipping rates.
       operationId: createShipment
       security: []
       parameters:
@@ -996,10 +1103,7 @@ paths:
           in: header
           required: true
           schema:
-            description: >-
-              This element allows you to assign a unique identifier to your
-              transaction. This element is also returned in the reply and helps
-              you match the request to the reply.
+            description: This element allows you to assign a unique identifier to your transaction. This element is also returned in the reply and helps you match the request to the reply.
             type: string
             minLength: 1
             maxLength: 50
@@ -1064,10 +1168,7 @@ paths:
       tags:
         - Shipments
       summary: Create Shipments asynchronously
-      description: >-
-        If you want to quickly create invoice information, and you are not in a
-        hurry to get the creation result, This endpoint helps you to process
-        shipments asynchronously.
+      description: If you want to quickly create invoice information, and you are not in a hurry to get the creation result, This endpoint helps you to process shipments asynchronously.
       operationId: CreateShipmentsAsync
       security: []
       parameters:
@@ -1076,10 +1177,7 @@ paths:
           in: header
           required: true
           schema:
-            description: >-
-              This element allows you to assign a unique identifier to your
-              transaction. This element is also returned in the reply and helps
-              you match the request to the reply.
+            description: This element allows you to assign a unique identifier to your transaction. This element is also returned in the reply and helps you match the request to the reply.
             type: string
             minLength: 1
             maxLength: 50
@@ -1138,10 +1236,7 @@ paths:
       tags:
         - Shipments
       summary: Retrieve Async Shipments Result
-      description: >-
-        This endpoint helps you to process confirmed shipments asynchronously
-        and produce results based on unique id. Cooperate `Create Shipments`
-        interface used together.
+      description: This endpoint helps you to process confirmed shipments asynchronously and produce results based on unique id. Cooperate `Create Shipments` interface used together.
       operationId: AsyncRetrieveShipmentsResult
       security: []
       parameters:
@@ -1153,13 +1248,9 @@ paths:
               type: array
               items:
                 type: string
-                description: >-
-                  The unique identifier generated by the `Create Shipments`
-                  interface.
+                description: The unique identifier generated by the `Create Shipments` interface.
                 example: 6887945876680704
-        description: >-
-          A collection of unique identifiers generated by the `Create Shipments`
-          interface. The maximum acceptable upper line is a group of 40.
+        description: A collection of unique identifiers generated by the `Create Shipments` interface. The maximum acceptable upper line is a group of 40.
       responses:
         '200':
           description: Success
@@ -1214,9 +1305,7 @@ paths:
       tags:
         - Shipments
       summary: Cancel Shipment
-      description: >-
-        Mark a shipment cancelled, if it is no longer needed or being used by
-        your organized.
+      description: Mark a shipment cancelled, if it is no longer needed or being used by your organized.
       operationId: cancelShipment
       security: []
       parameters:
@@ -1269,9 +1358,7 @@ paths:
       tags:
         - Shipments
       summary: Cancel Shipment By GigaTrackingNumber
-      description: >-
-        Mark a shipment cancelled, According to Giga tracking number, if it is
-        no longer needed or being used by your organized.
+      description: Mark a shipment cancelled, According to Giga tracking number, if it is no longer needed or being used by your organized.
       operationId: cancelShipmentByGigaTrackingNumber
       security: []
       parameters:
@@ -1424,11 +1511,7 @@ paths:
       tags:
         - Warehouses
       summary: Create Warehouse
-      description: >-
-        Create a warehouse location that you can use to create shipping items by
-        simply passing in the generated warehouse id. If the return address is
-        not supplied in the request body then it is assumed that the origin
-        address is the return address as well
+      description: Create a warehouse location that you can use to create shipping items by simply passing in the generated warehouse id. If the return address is not supplied in the request body then it is assumed that the origin address is the return address as well
       operationId: createWarehouse
       security: []
       parameters:
@@ -1646,12 +1729,7 @@ paths:
       tags:
         - Tracking
       summary: Track Document
-      description: >-
-        This endpoint helps you to request a letter that includes the
-        recipient's signature as a proof of delivery. Signature Proof of
-        Delivery is the only document supported by this endpoint. (Customers are
-        able to retrieve package POD files by submitting real-time requests to
-        logistics companies.)
+      description: This endpoint helps you to request a letter that includes the recipient's signature as a proof of delivery. Signature Proof of Delivery is the only document supported by this endpoint. (Customers are able to retrieve package POD files by submitting real-time requests to logistics companies.)
       operationId: getTrackDocument
       security: []
       parameters:
@@ -1705,16 +1783,9 @@ paths:
       tags:
         - Tracking
       summary: Start Tracking
-      description: >-
-        Allows you to subscribe to tracking updates for a package. You specify
-        the carrier_code and tracking_number of the package, and receive
-        notifications via
-        [webhooks](https://platform.gigacloudlogistics.com/docs/guide/track/create-webhook.html)
-        whenever the shipping status changes. The maximum number of
-        subscriptions for a group is 600.
+      description: Allows you to subscribe to tracking updates for a package. You specify the carrier_code and tracking_number of the package, and receive notifications via [webhooks](https://platform.gigacloudlogistics.com/docs/guide/track/create-webhook.html) whenever the shipping status changes. The maximum number of subscriptions for a group is 600.
       externalDocs:
-        url: >-
-          https://platform.gigacloudlogistics.com/docs/guide/track/track-package.html#considerations
+        url: https://platform.gigacloudlogistics.com/docs/guide/track/track-package.html#considerations
         description: Find more info here
       operationId: registerTrackNum
       security: []
@@ -1771,9 +1842,7 @@ paths:
       tags:
         - Tracking
       summary: Restart Tracking
-      description: >-
-        Restart the logistics order number that has stopped tracking to
-        automatic tracking;
+      description: Restart the logistics order number that has stopped tracking to automatic tracking;
       operationId: restartTrackNum
       security: []
       parameters:
@@ -1787,9 +1856,7 @@ paths:
                 type: string
                 description: The giga waybill number issued by the logistics center.
                 example: GCL1234567890120
-        description: >-
-          It is used to receive the request body of giga waybill number array
-          type. The maximum acceptable upper line is a group of 40.
+        description: It is used to receive the request body of giga waybill number array type. The maximum acceptable upper line is a group of 40.
       responses:
         '200':
           description: Success
@@ -1832,10 +1899,7 @@ paths:
       tags:
         - Tracking
       summary: History Track by Tracking Number
-      description: >-
-        This endpoint allows customers to access package history information,
-        providing tracking details without initiating a request to the logistics
-        company.
+      description: This endpoint allows customers to access package history information, providing tracking details without initiating a request to the logistics company.
       operationId: getHistoryTrackInfo
       security: []
       parameters:
@@ -1849,9 +1913,7 @@ paths:
                 type: string
                 description: The giga waybill number issued by the logistics center.
                 example: GCL1234567890120
-        description: >-
-          It is used to receive the request body of giga waybill number array
-          type. The maximum acceptable upper line is a group of 40.
+        description: It is used to receive the request body of giga waybill number array type. The maximum acceptable upper line is a group of 40.
       responses:
         '200':
           description: Success
@@ -1894,11 +1956,7 @@ paths:
       tags:
         - Tracking
       summary: Manual push by Tracking Number
-      description: >-
-        After successfully submitting the interface, the corresponding tracking
-        number will enter the task queue, and the push to your
-        [webhook](https://platform.gigacloudlogistics.com/docs/guide/track/create-webhook.html)
-        interface will be initiated by the global scheduler.
+      description: After successfully submitting the interface, the corresponding tracking number will enter the task queue, and the push to your [webhook](https://platform.gigacloudlogistics.com/docs/guide/track/create-webhook.html) interface will be initiated by the global scheduler.
       operationId: pushTracking
       security: []
       parameters:
@@ -1912,9 +1970,7 @@ paths:
                 type: string
                 description: The giga waybill number issued by the logistics center.
                 example: GCL1234567890120
-        description: >-
-          It is used to receive the request body of giga waybill number array
-          type. The maximum acceptable upper line is a group of 40.
+        description: It is used to receive the request body of giga waybill number array type. The maximum acceptable upper line is a group of 40.
       responses:
         '200':
           description: Success
@@ -1958,30 +2014,22 @@ components:
       type: object
       properties:
         grant_type:
-          description: >-
-            Example: `client_credentials`<br> Specify Type of customer
-            requesting the Oauth token.
+          description: 'Example: `client_credentials`<br> Specify Type of customer requesting the Oauth token.'
           type: string
           example: client_credentials
         client_id:
-          description: >-
-            Example: `xxxxxxxxx`<br> Specify the Client ID also known as API Key
-            received during gigacloud Developer portal registration.
+          description: 'Example: `xxxxxxxxx`<br> Specify the Client ID also known as API Key received during gigacloud Developer portal registration.'
           type: string
           example: xxxxxxxx
         client_secret:
-          description: >-
-            Example: `xxxxxxxxx`<br> Specify the Client secret also known as
-            Secret Key received during gigacloud Developer portal registration.
+          description: 'Example: `xxxxxxxxx`<br> Specify the Client secret also known as Secret Key received during gigacloud Developer portal registration.'
           type: string
           example: xxxxxxxx
     AuthSuccessResp:
       type: object
       properties:
         access_token:
-          description: >-
-            This is an encrypted OAuth token used to authenticate your API
-            requests. Use it in the authorization header of your API requests.
+          description: This is an encrypted OAuth token used to authenticate your API requests. Use it in the authorization header of your API requests.
           type: string
           example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX……
         token_type:
@@ -1989,9 +2037,7 @@ components:
           type: string
           example: Bearer
         expires_in:
-          description: >-
-            Indicates the token expiration time in seconds. The standard token
-            expiration time is one hour.
+          description: Indicates the token expiration time in seconds. The standard token expiration time is one hour.
           type: integer
           example: 3600
         scope:
@@ -2018,8 +2064,7 @@ components:
           example: US
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
         stateOrProvinceCode:
           description: This is state or province code.
           type: string
@@ -2085,27 +2130,16 @@ components:
                 enum:
                   - CARRIER
                   - GIGA
-                description: >-
-                  The source of the error, as indicated by the name this informs
-                  us if the API call failed because of the carrier or the
-                  platform itself.
+                description: The source of the error, as indicated by the name this informs us if the API call failed because of the carrier or the platform itself.
                 example: GIGA
               code:
-                description: >-
-                  The error code specified for the failed API Call.[Click here
-                  to see
-                  more](https://platform.gigacloudlogistics.com/docs/guide/overview/error-codes.html);
+                description: The error code specified for the failed API Call.[Click here to see more](https://platform.gigacloudlogistics.com/docs/guide/overview/error-codes.html);
                 type: string
                 example: VALIDATION_ERROR
               message:
                 type: string
-                description: >-
-                  The service is currently unavailable and we are working to
-                  resolve the issue. We apologize for any inconvenience. Please
-                  check back at a later time.
-                example: >-
-                  Failed to obtain the logistics account information. No
-                  corresponding data found.
+                description: The service is currently unavailable and we are working to resolve the issue. We apologize for any inconvenience. Please check back at a later time.
+                example: Failed to obtain the logistics account information. No corresponding data found.
             required:
               - source
               - code
@@ -2132,24 +2166,16 @@ components:
                 enum:
                   - CARRIER
                   - GIGA
-                description: >-
-                  The source of the error, as indicated by the name this informs
-                  us if the API call failed because of the carrier or the
-                  platform itself.
+                description: The source of the error, as indicated by the name this informs us if the API call failed because of the carrier or the platform itself.
                 example: GIGA
               code:
-                description: >-
-                  The error code specified for the failed API Call.[Click here
-                  to see
-                  more](https://platform.gigacloudlogistics.com/docs/guide/overview/error-codes.html);
+                description: The error code specified for the failed API Call.[Click here to see more](https://platform.gigacloudlogistics.com/docs/guide/overview/error-codes.html);
                 type: string
                 example: INVALID_TOKEN
               message:
                 type: string
                 description: An error message associated with the failed API call
-                example: >-
-                  An access token is missing,expired,revoked,malformed,or
-                  invalid for other reasons.
+                example: An access token is missing,expired,revoked,malformed,or invalid for other reasons.
             required:
               - source
               - code
@@ -2176,16 +2202,10 @@ components:
                 enum:
                   - CARRIER
                   - GIGA
-                description: >-
-                  The source of the error, as indicated by the name this informs
-                  us if the API call failed because of the carrier or the
-                  platform itself.
+                description: The source of the error, as indicated by the name this informs us if the API call failed because of the carrier or the platform itself.
                 example: GIGA
               code:
-                description: >-
-                  The error code specified for the failed API Call.[Click here
-                  to see
-                  more](https://platform.gigacloudlogistics.com/docs/guide/overview/error-codes.html);
+                description: The error code specified for the failed API Call.[Click here to see more](https://platform.gigacloudlogistics.com/docs/guide/overview/error-codes.html);
                 type: string
                 example: ACCESS_FAILURE
               message:
@@ -2218,16 +2238,10 @@ components:
                 enum:
                   - CARRIER
                   - GIGA
-                description: >-
-                  The source of the error, as indicated by the name this informs
-                  us if the API call failed because of the carrier or the
-                  platform itself.
+                description: The source of the error, as indicated by the name this informs us if the API call failed because of the carrier or the platform itself.
                 example: GIGA
               code:
-                description: >-
-                  The error code specified for the failed API Call.[Click here
-                  to see
-                  more](https://platform.gigacloudlogistics.com/docs/guide/overview/error-codes.html);
+                description: The error code specified for the failed API Call.[Click here to see more](https://platform.gigacloudlogistics.com/docs/guide/overview/error-codes.html);
                 type: string
                 example: SYS_ERROR
               message:
@@ -2260,25 +2274,16 @@ components:
                 enum:
                   - CARRIER
                   - GIGA
-                description: >-
-                  The source of the error, as indicated by the name this informs
-                  us if the API call failed because of the carrier or the
-                  platform itself.
+                description: The source of the error, as indicated by the name this informs us if the API call failed because of the carrier or the platform itself.
                 example: GIGA
               code:
-                description: >-
-                  The error code specified for the failed API Call.[Click here
-                  to see
-                  more](https://platform.gigacloudlogistics.com/docs/guide/overview/error-codes.html);
+                description: The error code specified for the failed API Call.[Click here to see more](https://platform.gigacloudlogistics.com/docs/guide/overview/error-codes.html);
                 type: string
                 example: SERVICE_UNAVAILABLE
               message:
                 type: string
                 description: An error message associated with the failed API call
-                example: >-
-                  The service is currently unavailable and we are working to
-                  resolve the issue. We apologize for any inconvenience. Please
-                  check back at a later time.
+                example: The service is currently unavailable and we are working to resolve the issue. We apologize for any inconvenience. Please check back at a later time.
             required:
               - source
               - code
@@ -2288,9 +2293,7 @@ components:
         - errors
     carrier_option_fedex:
       type: string
-      description: >-
-        Specify the four letter code of a FedEx operating company that meets
-        your requirements
+      description: Specify the four letter code of a FedEx operating company that meets your requirements
       enum:
         - FDXE
         - FDXG
@@ -2306,9 +2309,7 @@ components:
           type: string
           example: GLSXXXXXXXXX
         carrierCode:
-          description: >-
-            Specify the four letter code of a operating company that meets your
-            requirements
+          description: Specify the four letter code of a operating company that meets your requirements
           oneOf:
             - $ref: '#/components/schemas/carrier_option_fedex'
         countryCode:
@@ -2317,26 +2318,17 @@ components:
           example: US
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
         stateOrProvinceCode:
-          description: >-
-            This is the state or province code. Format and presence of this
-            field will vary, depending on country.
+          description: This is the state or province code. Format and presence of this field will vary, depending on country.
           type: string
           example: CA
         zipcode:
-          description: >-
-            Identification code of a region (usally small) for easier and
-            accurate mail/package delivery. The format and presence of this
-            field may vary depending on the country.
+          description: Identification code of a region (usally small) for easier and accurate mail/package delivery. The format and presence of this field may vary depending on the country.
           type: string
           example: '04756'
         shipDate:
-          description: >-
-            Specify the date on which the package is to be shipped. The
-            specified date should not be the current date or any date, 10 days
-            after the current date. The date format must be `YYYY-MM-DD`.
+          description: Specify the date on which the package is to be shipped. The specified date should not be the current date or any date, 10 days after the current date. The date format must be `YYYY-MM-DD`.
           type: string
           example: '2019-10-04'
       required:
@@ -2355,12 +2347,9 @@ components:
           example: US
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
         stateOrProvinceCode:
-          description: >-
-            This is the state or province code. Format and presence of this
-            element will vary, depending on country.
+          description: This is the state or province code. Format and presence of this element will vary, depending on country.
           maxLength: 2
           minLength: 2
           type: string
@@ -2374,14 +2363,10 @@ components:
           type: string
           example: '04756'
         alterMessage:
-          description: >-
-            This is specifies Alert details returned in the reply such as code,
-            message and any other parameters.
+          description: This is specifies Alert details returned in the reply such as code, message and any other parameters.
           type: string
         locationDescriptions:
-          description: >-
-            This object specifies location details returned in the reply such as
-            location ID, service area and airport ID etc.
+          description: This object specifies location details returned in the reply such as location ID, service area and airport ID etc.
           type: array
           items:
             type: object
@@ -2430,10 +2415,8 @@ components:
           type: string
           example: GLSXXXXXXXXX
         advcStreetDetail:
-          description: >-
-            Indicate the address to be validated and resolved. This includes the
-            address details, such as streetline, state or province code, country
-            code and postal code.
+          description: |-
+            Indicate the address to be validated and resolved. This includes the address details, such as streetline, state or province code, country code and postal code.
 
              > Note: Up to 50 of these can be submitted in a single request.
           type: array
@@ -2441,9 +2424,7 @@ components:
             type: object
             properties:
               clientReferenceId:
-                description: >-
-                  Client Reference Id. This element is also returned in the
-                  reply and helps you match the request to the reply.
+                description: Client Reference Id. This element is also returned in the reply and helps you match the request to the reply.
                 type: string
                 example: test-01
                 maxLength: 50
@@ -2453,12 +2434,9 @@ components:
                 example: US
                 externalDocs:
                   description: Find more info here
-                  url: >-
-                    https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
+                  url: https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
               stateOrProvinceCode:
-                description: >-
-                  This is the state or province code. Format and presence of
-                  this field will vary, depending on country.
+                description: This is the state or province code. Format and presence of this field will vary, depending on country.
                 type: string
                 example: CA
               city:
@@ -2466,32 +2444,23 @@ components:
                 type: string
                 example: MADAWASKA
               zipcode:
-                description: >-
-                  Identification code of a region (usally small) for easier and
-                  accurate mail/package delivery. The format and presence of
-                  this field may vary depending on the country.
+                description: Identification code of a region (usally small) for easier and accurate mail/package delivery. The format and presence of this field may vary depending on the country.
                 type: string
                 example: '04756'
               street1:
-                description: >-
-                  The first line of the street address. For some addresses, this
-                  may be the only line. Other addresses may require 2 or 3
-                  lines.
+                description: |-
+                  The first line of the street address. For some addresses, this may be the only line. Other addresses may require 2 or 3 lines.
                    - At least one line is required for a valid physical address; empty lines should not be included.
                    - Maximum up to three lines & no error check if entered more than this limit.
                    - Recommended limit per line is 35 characters.
                 type: string
                 example: 7372 PARKRIDGE BLVD
               street2:
-                description: >-
-                  The second line of the street address. For some addresses,
-                  this line may not be needed.
+                description: The second line of the street address. For some addresses, this line may not be needed.
                 type: string
                 example: APT 286, 2903 sprank
               street3:
-                description: >-
-                  The third line of the street address. For some addresses, this
-                  line may not be needed.
+                description: The third line of the street address. For some addresses, this line may not be needed.
                 type: string
             required:
               - carrierId
@@ -2519,9 +2488,7 @@ components:
       type: object
       properties:
         clientReferenceId:
-          description: >-
-            Client Reference Id. This element is also returned in the reply and
-            helps you match the request to the reply.
+          description: Client Reference Id. This element is also returned in the reply and helps you match the request to the reply.
           type: string
           maxLength: 50
           example: test-01
@@ -2538,9 +2505,7 @@ components:
           type: string
           example: MADAWASKA
         stateOrProvinceCode:
-          description: >-
-            This is the state or province code. Format and presence of this
-            element will vary, depending on country.
+          description: This is the state or province code. Format and presence of this element will vary, depending on country.
           maxLength: 2
           minLength: 2
           type: string
@@ -2552,9 +2517,8 @@ components:
           maxLength: 2
           minLength: 2
         customerMessage:
-          description: >-
-            This is specifies Alert details returned in the reply such as code,
-            message and any other parameters.
+          description: |-
+            This is specifies Alert details returned in the reply such as code, message and any other parameters.
              Following are informational code and messages with respect to the results:
              - INVALID.SUITE.NUMBER - Invalid or missing Apartment/Suite
              - SUITE.NUMBER.REQUIRED - Invalid or missing Apartment/Suite
@@ -2566,23 +2530,17 @@ components:
           items:
             type: object
         cityToken:
-          description: >-
-            This is the resolved city name with a token. The token is an
-            indication to the changes made.
+          description: This is the resolved city name with a token. The token is an indication to the changes made.
           type: array
           items:
             allOf:
               - $ref: '#/components/schemas/advcToken'
         postalCodeToken:
-          description: >-
-            This is the resolved postal code with a token. The token is an
-            indication to the changes made.
+          description: This is the resolved postal code with a token. The token is an indication to the changes made.
           allOf:
             - $ref: '#/components/schemas/advcToken'
         parsedPostalCode:
-          description: >-
-            The postal code specified in a form that is supported by USPS as
-            base, secondary and tertiary.\n - Base - AddOn - DeliveryPoint
+          description: The postal code specified in a form that is supported by USPS as base, secondary and tertiary.\n - Base - AddOn - DeliveryPoint
           example: 75063-8659
           type: object
           properties:
@@ -2618,10 +2576,7 @@ components:
           example: false
         normalizedStatusNameDPV:
           type: boolean
-          description: >-
-            Indicates the presence of a delivery point such as a mailbox.
-            Provided only for US addresses that are standardized against Postal
-            Data.
+          description: Indicates the presence of a delivery point such as a mailbox. Provided only for US addresses that are standardized against Postal Data.
           example: false
         standardizedStatusNameMatchSource:
           type: string
@@ -2629,54 +2584,34 @@ components:
           example: Postal or Map.
         resolutionMethodName:
           type: string
-          description: >-
-            Indicates the resolution method used to resolve the address.Valid
-            values: - USPS_VALIDATE\n - CA_VALIDATE\n - GENERIC_VALIDATE\n -
-            NAVTEQ_GEO_VALIDATE\n - TELEATLAS_GEO_VALIDATE\n
+          description: 'Indicates the resolution method used to resolve the address.Valid values: - USPS_VALIDATE\n - CA_VALIDATE\n - GENERIC_VALIDATE\n - NAVTEQ_GEO_VALIDATE\n - TELEATLAS_GEO_VALIDATE\n'
           example: USPS_VALIDATE
         ruralRouteHighwayContract:
           type: boolean
-          description: >-
-            Indicates if the resolved address is a Rural Route or Highway
-            Contract (US only). It returns true if it is rural route.
+          description: Indicates if the resolved address is a Rural Route or Highway Contract (US only). It returns true if it is rural route.
           example: true
         generalDelivery:
           type: boolean
-          description: >-
-            Indicates the mail service is for those without permanent address.
-            The mails for this address are held at a post office. Only applies
-            to addresses that can be standardized against Postal Data. Not
-            provided for US Geo Validated addresses. Note: Only returned when
-            the address cannot be resolved.
+          description: 'Indicates the mail service is for those without permanent address. The mails for this address are held at a post office. Only applies to addresses that can be standardized against Postal Data. Not provided for US Geo Validated addresses. Note: Only returned when the address cannot be resolved.'
           example: false
         attributes:
           type: object
-          description: >-
-            These are the key-value pair as additional information returned
-            along with the address processed by the system. These attribute will
-            list what is working and what is not on the input address. For More
-            information, look in to Chapter Address Attributes in the Overview.
+          description: These are the key-value pair as additional information returned along with the address processed by the system. These attribute will list what is working and what is not on the input address. For More information, look in to Chapter Address Attributes in the Overview.
           externalDocs:
             description: Find more info here
-            url: >-
-              https://developer.fedex.com/api/en-us/guides/api-reference.html#addressattributes
+            url: https://developer.fedex.com/api/en-us/guides/api-reference.html#addressattributes
       required:
         - clientReferenceId
     fedex_advc_street_level:
       type: object
       properties:
         resolvedAddress:
-          description: >-
-            Indicates the list of resolved addresses. The detailed resolved
-            address includes city, state, postal information, and resolution
-            method.
+          description: Indicates the list of resolved addresses. The detailed resolved address includes city, state, postal information, and resolution method.
           type: array
           items:
             $ref: '#/components/schemas/fedex_advc_street_detail'
         alerts:
-          description: >-
-            Indicates API Alerts includes alert type, alert code, and alert
-            message that is received when the address is resolved.
+          description: Indicates API Alerts includes alert type, alert code, and alert message that is received when the address is resolved.
           type: array
           items:
             type: object
@@ -2720,9 +2655,7 @@ components:
           maxLength: 25
           example: auto_fund_not_supported
         carrierCode:
-          description: >-
-            A string that uniquely identifies a GIGALOGISTICS resource, such as
-            a carrier, label, shipment, etc.
+          description: A string that uniquely identifies a GIGALOGISTICS resource, such as a carrier, label, shipment, etc.
           type: string
           minLength: 1
           maxLength: 25
@@ -2730,8 +2663,7 @@ components:
         serviceCode:
           description: service code
           externalDocs:
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping/specify-carrier-service.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping/specify-carrier-service.html
             description: Find more info here
           type: string
           minLength: 1
@@ -2877,9 +2809,7 @@ components:
           minLength: 1
           example: name
         primary:
-          description: >-
-            Is this the primary carrier that is used by default when no carrier
-            is specified in label/shipment creation
+          description: Is this the primary carrier that is used by default when no carrier is specified in label/shipment creation
           type: boolean
           example: false
         hasMultiPackageSupportingServices:
@@ -2996,8 +2926,7 @@ components:
           example: US
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
         stateOrProvinceCode:
           description: This is a placeholder for state or province code.
           type: string
@@ -3014,9 +2943,7 @@ components:
           maxLength: 10
           example: 65247
         addressType:
-          description: >-
-            Indicate this address type, Only `RESIDENTIAL` means residential
-            (private).
+          description: Indicate this address type, Only `RESIDENTIAL` means residential (private).
           type: string
           enum:
             - RESIDENTIAL
@@ -3033,9 +2960,7 @@ components:
       maxLength: 25
       pattern: ^WH(-[a-z0-9]+)+$
       example: se-28529731
-      description: >-
-        A string that uniquely identifies a GIGALOGISTICS resource, such as a
-        carrier, label, shipment, etc.
+      description: A string that uniquely identifies a GIGALOGISTICS resource, such as a carrier, label, shipment, etc.
     signature_option_fedex:
       type: object
       properties:
@@ -3118,14 +3043,10 @@ components:
         packageCode:
           type: string
           default: CUSTOM_PACKAGE
-          description: >-
-            The package type, such as `THICK_ENVELOPE`, `SMALL_FLAT_RATE_BOX`,
-            `LARGE_PACKAGE`, etc. The code `CUSTOM_PACKAGE` indicates a custom
-            or unknown package type.
+          description: The package type, such as `THICK_ENVELOPE`, `SMALL_FLAT_RATE_BOX`, `LARGE_PACKAGE`, etc. The code `CUSTOM_PACKAGE` indicates a custom or unknown package type.
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/other/guide-to-reading.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/other/guide-to-reading.html
         weight:
           allOf:
             - $ref: '#/components/schemas/Weight'
@@ -3139,11 +3060,7 @@ components:
              - Dimensions are optional but when added, then all three dimensions must be indicated.
         declaredInfo:
           type: object
-          description: >-
-            This is the Declared Value of any shipment.This is including, but
-            not limited to any loss, damage, delay, misdelivery, any failure to
-            provide information, or misdelivery of information related to the
-            Shipment.
+          description: This is the Declared Value of any shipment.This is including, but not limited to any loss, damage, delay, misdelivery, any failure to provide information, or misdelivery of information related to the Shipment.
           properties:
             currency:
               type: string
@@ -3168,29 +3085,22 @@ components:
           minLength: 1
           example: GLSxxxxxxxxxx
         serviceType:
-          description: >-
-            The carrier service used to ship the package, such as
-            `FEDEX_GROUND`, etc. If not filled in, the quotation information of
-            all services will be returned.
+          description: |-
+            The carrier service used to ship the package, such as `FEDEX_GROUND`, etc. If not filled in, the quotation information of all services will be returned.
              > **Note:** If this value is not passed, the quotation information of all logistics services will be returned.
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/guides/list-carrier-service.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/guides/list-carrier-service.html
           type: string
         shipperAddress:
           allOf:
             - $ref: '#/components/schemas/rate_address'
-          description: >-
-            The shipment's origin address. If you frequently ship from the same 
-            , consider creating a warehouse. Then you can simply specify the
-            `warehouseId` rather than the complete address each time.
+          description: |-
+            The shipment's origin address. If you frequently ship from the same  , consider creating a warehouse. Then you can simply specify the `warehouseId` rather than the complete address each time.
 
              > **Note:** Please note that the effective address in the warehouse is originAddress.
         recipientAddress:
-          description: >-
-            Indicate the descriptive data for the recipient location to which
-            the shipment is to be received.
+          description: Indicate the descriptive data for the recipient location to which the shipment is to be received.
           allOf:
             - $ref: '#/components/schemas/rate_address'
         warehouseId:
@@ -3198,10 +3108,7 @@ components:
           default: null
           allOf:
             - $ref: '#/components/schemas/gg_id'
-          description: >-
-            The
-            [warehouse](https://platform.gigacloudlogistics.com/docs/guide/other/guide-to-reading.html)
-            that the shipment is being shipped from. 
+          description: 'The [warehouse](https://platform.gigacloudlogistics.com/docs/guide/other/guide-to-reading.html) that the shipment is being shipped from. '
         rateRequestType:
           description: |-
             Indicate the type of rates to be returned.Following are values:
@@ -3274,16 +3181,10 @@ components:
                 enum:
                   - CARRIER
                   - GIGA
-                description: >-
-                  The source of the error, as indicated by the name this informs
-                  us if the API call failed because of the carrier or the
-                  platform itself.
+                description: The source of the error, as indicated by the name this informs us if the API call failed because of the carrier or the platform itself.
                 example: GIGA
               code:
-                description: >-
-                  The error code specified for the failed API Call.[Click here
-                  to see
-                  more](https://platform.gigacloudlogistics.com/docs/guide/overview/error-codes.html);
+                description: The error code specified for the failed API Call.[Click here to see more](https://platform.gigacloudlogistics.com/docs/guide/overview/error-codes.html);
                 type: string
                 example: DUPLICATE_REQUEST
               message:
@@ -3307,9 +3208,7 @@ components:
           maxLength: 35
           example: 1 Collection Point Name (Test 1)
         phoneNumber:
-          description: >-
-            The phone number of a contact person at this address. The format of
-            this phone number varies depending on the country.
+          description: The phone number of a contact person at this address. The format of this phone number varies depending on the country.
           type: string
           maxLength: 25
           example: 1234-123456789
@@ -3334,8 +3233,7 @@ components:
           example: GB
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
         stateOrProvinceCode:
           description: This is a placeholder for state or province code.
           type: string
@@ -3357,30 +3255,22 @@ components:
           maxLength: 35
           example: 1 Collection Point Name (Test 1)
         streetLine1:
-          description: >-
-            The first line of the street address. For some addresses, this may
-            be the only line. Other addresses may require 2 or 3 lines.
+          description: The first line of the street address. For some addresses, this may be the only line. Other addresses may require 2 or 3 lines.
           type: string
           maxLength: 35
           example: 155 COLLECTION STREET 1
         streetLine2:
-          description: >-
-            The second line of the street address. For some addresses, this line
-            may not be needed.
+          description: The second line of the street address. For some addresses, this line may not be needed.
           type: string
           maxLength: 35
           example: TEST
         streetLine3:
-          description: >-
-            The third line of the street address. For some addresses, this line
-            may not be needed.
+          description: The third line of the street address. For some addresses, this line may not be needed.
           type: string
           maxLength: 35
           example: TEST
         addressType:
-          description: >-
-            Indicate this address type, Only `RESIDENTIAL` means residential
-            (private).
+          description: Indicate this address type, Only `RESIDENTIAL` means residential (private).
           type: string
           enum:
             - RESIDENTIAL
@@ -3395,9 +3285,7 @@ components:
         - streetLine1
     ltl_address_info:
       type: object
-      description: >-
-        The address and contact details for the location where freight will be
-        picked up.
+      description: The address and contact details for the location where freight will be picked up.
       properties:
         contact:
           allOf:
@@ -3407,16 +3295,10 @@ components:
             - $ref: '#/components/schemas/ltl_address'
         readyTime:
           type: string
-          description: >-
-            When the shipment is ready to be picked up at the Origin (start).
-            The time will be represented in a 24-hour format.  <br/>Example:
-            09:00
+          description: 'When the shipment is ready to be picked up at the Origin (start). The time will be represented in a 24-hour format.  <br/>Example: 09:00'
         closeTime:
           type: string
-          description: >-
-            The closing window of when the shipment can be picked up at the
-            Origin (end). The time will be represented in a 24-hour format. 
-            <br/>Example: 15:00
+          description: 'The closing window of when the shipment can be picked up at the Origin (end). The time will be represented in a 24-hour format.  <br/>Example: 15:00'
       required:
         - address
     ltl_balance:
@@ -3426,14 +3308,11 @@ components:
           type: string
           enum:
             - USD
-          description: >-
-            Declared currency of the contained items. Currently only supports
-            USD.
+          description: Declared currency of the contained items. Currently only supports USD.
           example: USD
         amount:
           type: number
           format: double
-          maxLength: 0
           description: Insurable total product value for the items.
           example: 10
       required:
@@ -3545,10 +3424,7 @@ components:
             - $ref: '#/components/schemas/weight'
         freightClass:
           type: string
-          description: >-
-            The [NMFC freight
-            class](https://biz.nmfta.org/documents/ccsb/ccsb%20guidelines.pdf)
-            for your freight.
+          description: The [NMFC freight class](https://biz.nmfta.org/documents/ccsb/ccsb%20guidelines.pdf) for your freight.
         nmfcNumber:
           type: string
           description: The [NMFC commodity code](https://nmfta.org/) / item number.
@@ -3571,15 +3447,10 @@ components:
           description: Name to represent what the box contains.
         sku:
           type: string
-          description: >-
-            Put your product SKU if you are shipping a given product.If the SKU
-            has multiple boxes append a unique identifier to them like:-2,-3,-4
+          description: Put your product SKU if you are shipping a given product.If the SKU has multiple boxes append a unique identifier to them like:-2,-3,-4
         freightClass:
           type: string
-          description: >-
-            The [NMFC freight
-            class](https://biz.nmfta.org/documents/ccsb/ccsb%20guidelines.pdf)
-            for your freight.
+          description: The [NMFC freight class](https://biz.nmfta.org/documents/ccsb/ccsb%20guidelines.pdf) for your freight.
         nmfcNumber:
           type: string
           description: The [NMFC commodity code](https://nmfta.org/) / item number.
@@ -3625,9 +3496,7 @@ components:
           description: Indicates whether the item contains hazardous material or not.
         hazmatClass:
           type: string
-          description: >-
-            Class of the hazardous material.[Click here to see
-            more.](https://platform.gigacloudlogistics.com/docs)
+          description: Class of the hazardous material.[Click here to see more.](https://platform.gigacloudlogistics.com/docs)
       required:
         - packageType
         - description
@@ -3641,15 +3510,10 @@ components:
         code:
           type: string
           example: RES
-          description: >-
-            The code for the accessorial service offered. [Click here to see
-            more](https://platform.gigacloudlogistics.com/docs/guide/ltl-ship/accessorial-services.html).
+          description: The code for the accessorial service offered. [Click here to see more](https://platform.gigacloudlogistics.com/docs/guide/ltl-ship/accessorial-services.html).
         attributes:
           type: array
-          description: >-
-            Some carriers require additional supplemental information about an
-            accessorial service like name or phone. These requirements are
-            outlined here.
+          description: Some carriers require additional supplemental information about an accessorial service like name or phone. These requirements are outlined here.
           items:
             type: object
             properties:
@@ -3701,9 +3565,7 @@ components:
         - recipient
     ltl_service_center_info:
       type: object
-      description: >-
-        The address and contact details for the location where freight will be
-        picked up.
+      description: The address and contact details for the location where freight will be picked up.
       properties:
         code:
           type: string
@@ -3746,9 +3608,7 @@ components:
           description: This is a description of the item that is provided by the carrier.
           type: string
         type:
-          description: >-
-            This represents the type of the charge and will return `TOTAL`,
-            `DISCOUNT`, `ACCESSORIAL`, `CONTAINER`, or `UNCATEGORIZED`, etc.
+          description: This represents the type of the charge and will return `TOTAL`, `DISCOUNT`, `ACCESSORIAL`, `CONTAINER`, or `UNCATEGORIZED`, etc.
           type: string
         rate:
           description: Charge rate.
@@ -3775,19 +3635,14 @@ components:
       properties:
         quoteId:
           type: string
-          description: >-
-            This quoteId is generated and attached to this quote. This ID can be
-            used to schedule a pickup based on this quote.
+          description: This quoteId is generated and attached to this quote. This ID can be used to schedule a pickup based on this quote.
         quoteType:
           type: string
-          description: >-
-            When generating a spot-quote, `spot` is the string returned. For
-            contract quotes, `contract` is the string returned.
+          description: When generating a spot-quote, `spot` is the string returned. For contract quotes, `contract` is the string returned.
         serviceLevel:
           type: string
-          description: >-
-            service level code. Valid values include `STD`, `GSDS`, or `NAN`,
-            etc.
+          description: |-
+            service level code. Valid values include `STD`, `GSDS`, or `NAN`, etc.
 
              > - STD : Standard Service 
              > - GSDS : Guaranteed Service
@@ -3809,9 +3664,7 @@ components:
             - $ref: '#/components/schemas/ltl_service_center_info'
         charges:
           type: array
-          description: >-
-            An array of objects containing an itemized breakdown of the charges
-            for the quote.
+          description: An array of objects containing an itemized breakdown of the charges for the quote.
           items:
             allOf:
               - $ref: '#/components/schemas/charge'
@@ -3819,9 +3672,7 @@ components:
           type: string
         estimateDeliveryDays:
           type: number
-          description: >-
-            This number represents the estimated number of days between pickup
-            and delivery if provided by the carrier.
+          description: This number represents the estimated number of days between pickup and delivery if provided by the carrier.
         pickupDate:
           type: string
           description: 'Ready for pick up date (YYYY-MM-DD). <br/> Example: 2022-09-22'
@@ -3830,14 +3681,10 @@ components:
           description: 'delivery date (YYYY-MM-DD). <br/> Example: 2022-09-22'
         deliveryTime:
           type: string
-          description: >-
-            delivery Time (HH-mm-ss). <br/> Example: 17:00:00. Minimum time
-            limit for time-guaranteed service.
+          description: 'delivery Time (HH-mm-ss). <br/> Example: 17:00:00. Minimum time limit for time-guaranteed service.'
         carrierMessage:
           type: string
-          description: >-
-            This optional field contains contains a message about the quote if
-            provided by the carrier.
+          description: This optional field contains contains a message about the quote if provided by the carrier.
         netCharge:
           description: Rate quote net charge for this service level.
           type: object
@@ -3888,9 +3735,7 @@ components:
           type: string
           example: 1 Collection Point Name (Test 1)
         phoneNumber:
-          description: >-
-            The phone number of a contact person at this address. PhoneNumber
-            consist of 10 digits,with a 3-digit area.
+          description: The phone number of a contact person at this address. PhoneNumber consist of 10 digits,with a 3-digit area.
           type: string
           example: 6269128886
         phoneExtension:
@@ -3901,22 +3746,25 @@ components:
           type: string
           example: Gigacloud AT1
         emailAddress:
-          description: Specify contact email address. Maximum length is 40.
+          description: Specify contact email address.
           type: string
-          maxLength: 40
           example: TEST@TEST.COM
       required:
         - phoneNumber
         - personName
-        - emailAddress
     ltl_shipment_address:
       type: object
       description: The address of the contact person.
       properties:
         countryCode:
-          description: 'Country abbreviations.<br/>Example: `US`'
+          description: This is the two-letter country code.
           type: string
+          minLength: 2
+          maxLength: 2
           example: US
+          externalDocs:
+            description: Find more info here
+            url: https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
         stateOrProvinceCode:
           description: This is a placeholder for state or province code.
           type: string
@@ -3930,27 +3778,19 @@ components:
           type: string
           example: 30122
         streetLine1:
-          description: >-
-            The first line of the street address. For some addresses, this may
-            be the only line. Other addresses may require 2 or 3 lines.
+          description: The first line of the street address. For some addresses, this may be the only line. Other addresses may require 2 or 3 lines.
           type: string
           example: 850 Douglas Hills Rd, Suit 100
         streetLine2:
-          description: >-
-            The second line of the street address. For some addresses, this line
-            may not be needed.
+          description: The second line of the street address. For some addresses, this line may not be needed.
           type: string
           example: TEST
         streetLine3:
-          description: >-
-            The third line of the street address. For some addresses, this line
-            may not be needed.
+          description: The third line of the street address. For some addresses, this line may not be needed.
           type: string
           example: TEST
         addressType:
-          description: >-
-            Indicate this address type, Only `RESIDENTIAL` means residential
-            (private).
+          description: Indicate this address type, Only `RESIDENTIAL` means residential (private).
           type: string
           enum:
             - RESIDENTIAL
@@ -3963,46 +3803,6 @@ components:
         - city
         - zipCode
         - streetLine1
-    ltl_shipment_payor:
-      type: object
-      properties:
-        type:
-          type: string
-          example: S
-          description: |-
-            The type of billing. Valid values include `C`, `S`, or `T`.
-
-             - `C` : consignee
-             - `S` : shipper
-             - `T` : third_party
-
-             > **Note:** This item is required when the logistics company is RRTS or ESTES.
-        terms:
-          type: string
-          example: P
-          description: |-
-            The payment terms. Valid values include `P`, `C`.
-
-             - `P` : prepaid
-             - `C` : collect
-
-             > **Note:** This item is required when the logistics company is RRTS or ESTES.
-        account:
-          type: string
-          example: '123456'
-          description: The account number to bill for this pickup.
-        address:
-          description: The address of the location.
-          allOf:
-            - $ref: '#/components/schemas/ltl_shipment_address'
-        contact:
-          description: The information for the contact person.
-          allOf:
-            - $ref: '#/components/schemas/ltl_shipment_contact'
-      required:
-        - type
-        - terms
-        - contact
     ltl_shipment_itemLine:
       type: object
       properties:
@@ -4020,9 +3820,7 @@ components:
         sku:
           type: string
           example: WH123456
-          description: >-
-            Put your product SKU if you are shipping a given product.If the SKU
-            has multiple boxes append a unique identifier to them like:-2,-3,-4
+          description: Put your product SKU if you are shipping a given product.If the SKU has multiple boxes append a unique identifier to them like:-2,-3,-4
         freightClass:
           type: string
           example: '65'
@@ -4031,17 +3829,11 @@ components:
           type: string
           description: The [NMFC commodity code](https://nmfta.org/) / item number.
         dimensions:
-          description: |-
-            The dimensions of the container.
-
-             > **Note** Either weight or dimensions is required.
+          description: The dimensions of the container.
           allOf:
             - $ref: '#/components/schemas/dimensions'
         weight:
-          description: |-
-            The weight of the container.
-
-             > **Note** Either weight or dimensions is required.
+          description: The weight of the container.
           allOf:
             - $ref: '#/components/schemas/weight'
         quantity:
@@ -4079,10 +3871,7 @@ components:
         freightClass:
           type: string
           example: '65'
-          description: >-
-            The [NMFC freight
-            class](https://biz.nmfta.org/documents/ccsb/ccsb%20guidelines.pdf)
-            for your freight.
+          description: The [NMFC freight class](https://biz.nmfta.org/documents/ccsb/ccsb%20guidelines.pdf) for your freight.
         nmfcNumber:
           type: string
           description: The [NMFC commodity code](https://nmfta.org/) / item number.
@@ -4100,17 +3889,11 @@ components:
           allOf:
             - $ref: '#/components/schemas/ltl_balance'
         dimensions:
-          description: |-
-            The dimensions of the handling unit.
-
-             > **Note:** Either weight or dimensions is required.
+          description: The dimensions of the handling unit.The maximum of dimension is (240L x 96W x 102H)
           allOf:
             - $ref: '#/components/schemas/dimensions'
         weight:
-          description: |-
-            The weight of the handling unit.
-
-             > **Note:** Either weight or dimensions is required.
+          description: The weight of the handling unit.
           allOf:
             - $ref: '#/components/schemas/weight'
         pieces:
@@ -4122,18 +3905,32 @@ components:
         hazmat:
           type: boolean
           default: false
-          description: >-
-            Indicates whether the handling unit contains hazardous material or
-            not.
+          description: Indicates whether the handling unit contains hazardous material or not.
         hazmatClass:
           type: string
-          description: >-
-            Class of the hazardous material.[Click here to see
-            more.](https://platform.gigacloudlogistics.com/docs)
+          description: Class of the hazardous material.[Click here to see more.](https://platform.gigacloudlogistics.com/docs)
       required:
         - packageType
         - quantity
         - pieces
+        - weight
+    accessorials_bol:
+      type: object
+      properties:
+        code:
+          type: string
+          example: RES
+          description: The code for the accessorial service offered. [Click here to see more](https://platform.gigacloudlogistics.com/docs/guide/ltl-ship/accessorial-services-bol.html).
+        attributes:
+          type: array
+          description: Some carriers require additional supplemental information about an accessorial service like name or phone. These requirements are outlined here.
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              value:
+                type: string
     reference_number:
       type: object
       properties:
@@ -4159,9 +3956,7 @@ components:
         value:
           type: string
           example: '98357607'
-          description: >-
-            Additional reference number that correlates to the additional
-            reference name.
+          description: Additional reference number that correlates to the additional reference name.
       required:
         - type
         - value
@@ -4182,74 +3977,126 @@ components:
           description: 'Ready for delivery up date (YYYY-MM-DD). <br/> Example: 2022-05-10'
         serviceType:
           type: string
-          description: The carrier service used to ship the package
+          description: 'The carrier service used to ship the package. <br/> Example: `ESTES_STANDAR`'
+          externalDocs:
+            description: Find more info here
+            url: https://platform.gigacloudlogistics.com/docs/guide/guides/list-carrier-service.html
           example: ESTES_STANDAR
         shipper:
           type: object
-          description: >-
-            The address and contact details for the location where freight will
-            be picked up.
+          description: The address and contact details for the location where freight will be picked up.
           properties:
             contact:
               allOf:
                 - $ref: '#/components/schemas/ltl_shipment_contact'
+              description: Indicate the contact details for this shipment. The requirements for mandatory fields and field length limitations may vary across different carriers.
+              externalDocs:
+                description: Find more info here
+                url: https://platform.gigacloudlogistics.com/docs/guide/ltl-ship/validation/bol/shipper-contact.html
             address:
               allOf:
                 - $ref: '#/components/schemas/ltl_shipment_address'
+              description: This is detailed information on physical location. The requirements for mandatory fields and field length limitations may vary across different carriers.
+              externalDocs:
+                description: Find more info here
+                url: https://platform.gigacloudlogistics.com/docs/guide/ltl-ship/validation/bol/shipper-address.html
             readyTime:
               type: string
-              description: >-
-                When the shipment is ready to be picked up at the Origin
-                (start). The time will be represented in a 24-hour format. 
-                <br/>Example: 09:00
+              description: |-
+                When the shipment is ready to be picked up at the Origin (start). The time will be represented in a 24-hour format.  <br/>Example: 09:00
+
+                 > **Note:** readyTime is required when the carrier is ESTES.
               example: '09:00'
             closeTime:
               type: string
-              description: >-
-                The closing window of when the shipment can be picked up at the
-                Origin (end). The time will be represented in a 24-hour format.
-                <br/>Example: 17:00
+              description: 'The closing window of when the shipment can be picked up at the Origin (end). The time will be represented in a 24-hour format. <br/>Example: 17:00'
               example: '17:00'
           required:
             - contact
             - address
         recipient:
           type: object
-          description: >-
-            The address and contact details for the location where the freight
-            will be sent.
+          description: The address and contact details for the location where the freight will be sent.
           properties:
             contact:
               allOf:
                 - $ref: '#/components/schemas/ltl_shipment_contact'
+              description: Indicate the contact details for this shipment. The requirements for mandatory fields and field length limitations may vary across different carriers.
+              externalDocs:
+                description: Find more info here
+                url: https://platform.gigacloudlogistics.com/docs/guide/ltl-ship/validation/bol/recipient-contact.html
             address:
               allOf:
                 - $ref: '#/components/schemas/ltl_shipment_address'
+              description: This is detailed information on physical location. The requirements for mandatory fields and field length limitations may vary across different carriers.
+              externalDocs:
+                description: Find more info here
+                url: https://platform.gigacloudlogistics.com/docs/guide/ltl-ship/validation/bol/recipient-address.html
             readyTime:
               type: string
               example: '09:00'
-              description: >-
-                When the Destination is ready to begin receiving the
-                shipment.The time will be represented in a 24-hour format. 
-                <br/>Example: 09:00
+              description: 'When the Destination is ready to begin receiving the shipment.The time will be represented in a 24-hour format.  <br/>Example: 09:00'
             closeTime:
               type: string
               example: '17:00'
-              description: >-
-                The closing window of when the Destination can receive the
-                shipment. The time will be represented in a 24-hour format.
-                <br/>Example: 17:00
+              description: 'The closing window of when the Destination can receive the shipment. The time will be represented in a 24-hour format. <br/>Example: 17:00'
           required:
             - contact
             - address
         payor:
           type: object
-          allOf:
-            - $ref: '#/components/schemas/ltl_shipment_payor'
+          description: |-
+            Specifies the payment details specifying the method and means of payment to carrier for providing shipping services. The difference between each carrier is as follows.
+
+             > - **ESTES** : Required
+          properties:
+            type:
+              type: string
+              example: S
+              description: |+
+                The type of billing. Valid values include `C`, `S`, or `T`.
+
+                 - `C` : consignee
+                 - `S` : shipper
+                 - `T` : third_party
+
+            terms:
+              type: string
+              example: P
+              description: |+
+                The payment terms. Valid values include `P`, `C`, or `T`.
+
+                 - `P` : prepaid
+                 - `C` : collect
+
+                 - `T` : third_party
+
+            account:
+              type: string
+              example: '123456'
+              description: The account number to bill for this pickup.
+            address:
+              description: Payer's address information. The requirements for mandatory fields and field length limitations may vary across different carriers.
+              externalDocs:
+                description: Find more info here
+                url: https://platform.gigacloudlogistics.com/docs/guide/ltl-ship/validation/bol/payor-address.html
+              allOf:
+                - $ref: '#/components/schemas/ltl_shipment_address'
+            contact:
+              description: Payer's contact information. The requirements for mandatory fields and field length limitations may vary across different carriers.
+              externalDocs:
+                description: Find more info here
+                url: https://platform.gigacloudlogistics.com/docs/guide/ltl-ship/validation/bol/recipient-contact.html
+              allOf:
+                - $ref: '#/components/schemas/ltl_shipment_contact'
+          required:
+            - type
+            - terms
         handlingUnits:
-          description: >-
-            Array of handling units to be included on a shipment.For
-            example,pallets,boxes.
+          description: Array of handling units to be included on a shipment.For example,pallets,boxes.The requirements for mandatory fields and field length limitations may vary across different carriers.
+          externalDocs:
+            description: Find more info here
+            url: https://platform.gigacloudlogistics.com/docs/guide/ltl-ship/validation/bol/handlingUnits.html
           type: array
           items:
             allOf:
@@ -4264,11 +4111,9 @@ components:
               properties:
                 enabled:
                   type: boolean
-                  default: true
+                  default: false
                   example: true
-                  description: >-
-                    Indicates whether or not you want the image of the Bill Of
-                    Lading PDF returned in the response.
+                  description: Indicates whether or not you want the image of the Bill Of Lading PDF returned in the response.
                 imageType:
                   type: string
                   default: PDF
@@ -4282,10 +4127,8 @@ components:
               properties:
                 enabled:
                   type: boolean
-                  description: >-
-                    Indicates whether or not you want the image of the shipping
-                    labels PDF returned in the response.
-                  default: true
+                  description: Indicates whether or not you want the image of the shipping labels PDF returned in the response.
+                  default: false
                   example: true
                 imageType:
                   type: string
@@ -4347,10 +4190,13 @@ components:
           description: The accessorial services.
           items:
             allOf:
-              - $ref: '#/components/schemas/accessorials'
+              - $ref: '#/components/schemas/accessorials_bol'
         referenceNumbers:
           type: array
-          description: List of reference numbers
+          description: List of reference numbers.The requirements for mandatory fields and field length limitations may vary across different carriers.
+          externalDocs:
+            description: Find more info here
+            url: https://platform.gigacloudlogistics.com/docs/guide/ltl-ship/validation/bol/referenceNumbers.html
           items:
             allOf:
               - $ref: '#/components/schemas/reference_number'
@@ -4368,6 +4214,20 @@ components:
         - recipient
         - shipper
         - handlingUnits
+    ltl_shipment_success_async:
+      type: object
+      properties:
+        success:
+          description: Used to judge whether it is successful.
+          type: boolean
+          example: true
+          default: true
+        data:
+          description: A unique identifier for subsequent asynchronously fetched results.
+          type: string
+      required:
+        - success
+        - data
     ltl_shipment_response:
       type: object
       properties:
@@ -4388,12 +4248,10 @@ components:
           description: The carrier service used to ship the package
         gigaTrackingNumber:
           type: string
-          description: >-
-            The GIGA tracking number for the shipment. A string that uniquely
-            identifies the shipment
-        proNumber:
+          description: The GIGA tracking number for the shipment. A string that uniquely identifies the shipment
+        trackingNumber:
           type: string
-          description: PRO number
+          description: The tracking number for the shipment. The format depends on the carrier.
         documents:
           type: array
           description: An array of document objects.
@@ -4421,7 +4279,7 @@ components:
         - carrierCode
         - serviceType
         - gigaTrackingNumber
-        - proNumber
+        - trackingNumber
     ltl_success_response:
       type: object
       properties:
@@ -4437,7 +4295,7 @@ components:
       required:
         - success
         - data
-    ltl_shipment_success_async:
+    ltl_shipment_async_result_response:
       type: object
       properties:
         success:
@@ -4447,7 +4305,20 @@ components:
           default: true
         data:
           description: A unique identifier for subsequent asynchronously fetched results.
-          type: string
+          type: array
+          items:
+            type: object
+            properties:
+              response:
+                description: Response body for asynchronous requests.
+                allOf:
+                  - $ref: '#/components/schemas/ltl_success_response'
+              httpCode:
+                type: string
+                description: Http status code
+              requestId:
+                type: string
+                description: The unique identifier generated by the `Create Shipments Async` interface.
       required:
         - success
         - data
@@ -4461,15 +4332,10 @@ components:
         requestAction:
           type: string
           default: LL
-          description: >-
-            This is the pickup action to perform. If the request is for Estes to
-            pick up a full trailer, choose HE (to indicate empty) or HL (to
-            indicate loaded). If you need Estes to drop off an empty trailer,
-            choose SE. If the request is for a pickup of freight from your dock
-            that is not a trailer-load, then pass LL (or don’t pass this
-            element, and it will default to LL). If Estes must call to set up an
-            appointment before arriving, then pass AP. Valid values are listed
-            below: `AP`:Appointment required 
+          description: |-
+            This is the pickup action to perform. If the request is for Estes to pick up a full trailer, choose HE (to indicate empty) or HL (to indicate loaded). If you need Estes to drop off an empty trailer, choose SE. If the request is for a pickup of freight from your dock that is not a trailer-load, then pass LL (or don’t pass this element, and it will default to LL). If Estes must call to set up an appointment before arriving, then pass AP. Valid values are listed below:
+
+             `AP`:Appointment required 
 
              `HE`:LTL hook empty 
 
@@ -4486,82 +4352,123 @@ components:
             - SE
         paymentTerms:
           type: string
-          description: >-
-            These are the requested payment terms to apply to any resulting
-            shipments picked up.
+          description: |-
+            The payment terms. Valid values include `P`, `C`.
 
-             `COL`: Collect
-
-             `PPD`: Prepaid
+             - `P` : prepaid
+             - `C` : collect
           enum:
-            - COL
-            - PPD
+            - P
+            - C
         pickupDate:
           type: string
           description: 'Ready for pick up date (YYYY-MM-DD). <br/> Example: 2024-05-10'
         pickupStartTime:
           type: string
-          description: >-
-            When the shipment is ready to be picked up at the Origin (start).
-            The time will be represented in a 24-hour format.  <br/>Example:
-            09:00
+          description: 'When the shipment is ready to be picked up at the Origin (start). The time will be represented in a 24-hour format.  <br/>Example: 09:00'
         pickupEndTime:
           type: string
-          description: >-
-            The closing window of when the shipment can be picked up at the
-            Origin (end). The time will be represented in a 24-hour format.
-            <br/>Example: 17:00
+          description: 'The closing window of when the shipment can be picked up at the Origin (end). The time will be represented in a 24-hour format. <br/>Example: 17:00'
         shipper:
           type: object
-          description: >-
-            The address and contact details for the location where freight will
-            be picked up.
+          description: The address and contact details for the location where freight will be picked up.
           properties:
-            shipperName:
-              type: string
-              maxLength: 30
             address:
-              allOf:
-                - $ref: '#/components/schemas/ltl_address'
+              type: object
+              description: The address of the contact person.
+              properties:
+                countryCode:
+                  description: 'This is the two-letter country code.<br/> Example: US'
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  example: US
+                  externalDocs:
+                    description: Find more info here
+                    url: https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
+                stateOrProvinceCode:
+                  description: This is a placeholder for state or province code.
+                  type: string
+                  maxLength: 2
+                  minLength: 2
+                  example: GA
+                city:
+                  description: The name of city, town of the recipient.Max length is 35.
+                  type: string
+                  maxLength: 20
+                  minLength: 1
+                  example: LITHIA SPRINGS
+                zipCode:
+                  description: This is the postal code.
+                  type: string
+                  maxLength: 5
+                  minLength: 5
+                  example: 30122
+                streetLine1:
+                  description: The first line of the street address. For some addresses, this may be the only line. Other addresses may require 2 or 3 lines.
+                  type: string
+                  maxLength: 30
+                  minLength: 1
+                  example: 155 COLLECTION STREET 1
+                streetLine2:
+                  description: The second line of the street address. For some addresses, this line may not be needed.
+                  type: string
+                  maxLength: 30
+                  minLength: 1
+                  example: TEST
+                streetLine3:
+                  description: The third line of the street address. For some addresses, this line may not be needed.
+                  type: string
+                  maxLength: 30
+                  minLength: 1
+                  example: TEST
+              required:
+                - countryCode
+                - stateOrProvinceCode
+                - city
+                - zipCode
+                - streetLine1
             contact:
               type: object
+              description: The information for the contact person.
               properties:
+                companyName:
+                  description: Specify contact company name.
+                  type: string
+                  maxLength: 30
+                  minLength: 1
                 personName:
                   description: The name of a contact person at this address.
                   type: string
                   minLength: 1
                   maxLength: 30
-                  example: 1 Collection Point Name (Test 1)
+                  example: MICHAEL MAO
                 phoneNumber:
-                  description: >-
-                    The phone number of a contact person at this address.
-                    PhoneNumber consist of 10 digits,with a 3-digit area.
+                  description: The phone number of a contact person at this address. PhoneNumber consist of 10 digits,with a 3-digit area.
                   type: string
                   minLength: 10
                   maxLength: 10
                   example: 6269128886
                 emailAddress:
-                  description: >-
-                    Specify contact email address. Maximum length is 40.Required
-                    when receiveNotifications is true.
+                  description: Specify contact email address.Required when receiveNotifications is true.
                   type: string
-                  maxLength: 52
                   example: TEST@TEST.COM
                 receiveNotifications:
                   type: boolean
+                  default: false
                   description: Whether to receive notifications by email.
               required:
                 - personName
-                - receiveNotifications
+                - companyName
           required:
-            - shipperName
             - address
+            - contact
         totalPieces:
           type: number
           description: Total number of pieces
         totalWeight:
-          type: number
-          description: Total weight of shipment
+          allOf:
+            - $ref: '#/components/schemas/weight'
         totalHandlingUnits:
           type: number
           description: Total numbers of handling unit
@@ -4601,15 +4508,66 @@ components:
                   - RD
                   - SD
                   - ST
+            required:
+              - length
+              - type
         referenceNumbers:
           type: array
           description: List of reference numbers
           items:
-            allOf:
-              - $ref: '#/components/schemas/reference_number'
-        commodities:
+            type: object
+            properties:
+              type:
+                type: string
+                example: BOL
+                description: |-
+                  Type of the reference number
+
+                   Valid values:
+
+                   `AID`: Appointment ID
+
+                   `ARN`: Amazon Reference Number
+
+                   `AUT`: Authorization Number
+
+                   `BOL`: Shipper Bill of Lading Number
+
+                   `DOC`: Dock Door Number
+
+                   `DPT`: Consignee Department Number
+
+                   `EXL`: Estes Unique ID EUID# or CUID#
+
+                   `HO` : Homeowner Name
+
+                   `LDN`: Load Number ID
+
+                   `NUM`: Shipper Reference Numbers
+
+                   `PKG`: Sipper Package ID
+
+                   `PON`: Purchase Order Number
+
+                   `PRO`: Estes PRO#
+
+                   `PU#`: Pickup Number from the Customer
+
+                   `RAU`: Shipper Return Authorization
+
+                   `SID`: Ship ID#
+
+                   `SNO`: Shipper Numbers 
+              value:
+                type: string
+                example: '98357607'
+                description: Value of the reference number
+            required:
+              - type
+              - value
+        handlingUnits:
           type: array
-          description: commodities
+          description: Array of handling units.
           items:
             type: object
             properties:
@@ -4698,14 +4656,10 @@ components:
                 type: number
                 minimum: 0
                 maximum: 999999
-                description: >-
-                  The number of pieces of transport handling equipment (pallets,
-                  boxes, cases, etc.) in this consignment.
+                description: The number of pieces of transport handling equipment (pallets, boxes, cases, etc.) in this consignment.
               weight:
-                type: number
-                minimum: 0
-                maximum: 45000
-                description: The declared total weight of the shipment. The unit is pounds.
+                allOf:
+                  - $ref: '#/components/schemas/weight'
               nmfcNumber:
                 type: string
                 description: nmfcNumber
@@ -4747,9 +4701,7 @@ components:
           type: string
           example: 1 Collection Point Name (Test 1)
         phoneNumber:
-          description: >-
-            The phone number of a contact person at this address. The format of
-            this phone number varies depending on the country.
+          description: The phone number of a contact person at this address. The format of this phone number varies depending on the country.
           type: string
           example: 1234-123456789
         phoneExtension:
@@ -4773,8 +4725,7 @@ components:
           example: GB
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
         stateOrProvinceCode:
           description: This is a placeholder for state or province code.
           type: string
@@ -4804,9 +4755,7 @@ components:
           type: string
           example: Haseneggstrasse 29
         addressType:
-          description: >-
-            Indicate this address type, Only `RESIDENTIAL` means residential
-            (private).
+          description: Indicate this address type, Only `RESIDENTIAL` means residential (private).
           type: string
           enum:
             - RESIDENTIAL
@@ -4817,27 +4766,19 @@ components:
       type: object
       properties:
         contact:
-          description: >-
-            Indicate the contact details for this shipment. The requirements for
-            mandatory fields and field length limitations may vary across
-            different carriers.
+          description: Indicate the contact details for this shipment. The requirements for mandatory fields and field length limitations may vary across different carriers.
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping/shipper/shipper-contact.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping/shipper/shipper-contact.html
           allOf:
             - $ref: '#/components/schemas/shipperContact'
         address:
-          description: >-
-            This is detailed information on physical location. The requirements
-            for mandatory fields and field length limitations may vary across
-            different carriers.
+          description: This is detailed information on physical location. The requirements for mandatory fields and field length limitations may vary across different carriers.
           allOf:
             - $ref: '#/components/schemas/shipperAddress'
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping/shipper/shipper-address.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping/shipper/shipper-address.html
       required:
         - contact
         - address
@@ -4849,9 +4790,7 @@ components:
           type: string
           example: 1 Collection Point Name (Test 1)
         phoneNumber:
-          description: >-
-            The phone number of a contact person at this address. The format of
-            this phone number varies depending on the country.
+          description: The phone number of a contact person at this address. The format of this phone number varies depending on the country.
           type: string
           example: 1234-123456789
         phoneExtension:
@@ -4875,12 +4814,9 @@ components:
           example: GB
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
         stateOrProvinceCode:
-          description: >-
-            This is a placeholder for state or province code. Required when used
-            for US.
+          description: This is a placeholder for state or province code. Required when used for US.
           type: string
           example: TEST
         city:
@@ -4908,9 +4844,7 @@ components:
           type: string
           example: Haseneggstrasse 29
         addressType:
-          description: >-
-            Indicate this address type, Only `RESIDENTIAL` means residential
-            (private).
+          description: Indicate this address type, Only `RESIDENTIAL` means residential (private).
           type: string
           enum:
             - RESIDENTIAL
@@ -4921,27 +4855,19 @@ components:
       type: object
       properties:
         contact:
-          description: >-
-            Indicate the contact details for this shipment. The requirements for
-            mandatory fields and field length limitations may vary across
-            different carriers.
+          description: Indicate the contact details for this shipment. The requirements for mandatory fields and field length limitations may vary across different carriers.
           allOf:
             - $ref: '#/components/schemas/recipientContact'
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping/recipent/recipent-contact.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping/recipent/recipent-contact.html
         address:
-          description: >-
-            This is detailed information on physical location. The requirements
-            for mandatory fields and field length limitations may vary across
-            different carriers.
+          description: This is detailed information on physical location. The requirements for mandatory fields and field length limitations may vary across different carriers.
           allOf:
             - $ref: '#/components/schemas/recipientAddress'
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping/recipent/recipent-address.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping/recipent/recipent-address.html
       required:
         - contact
         - address
@@ -4954,16 +4880,12 @@ components:
           maxLength: 35
           example: 1 Collection Point Name (Test 1)
         phoneNumber:
-          description: >-
-            The phone number of a contact person at this address. The format of
-            this phone number varies depending on the country.
+          description: The phone number of a contact person at this address. The format of this phone number varies depending on the country.
           type: string
           maxLength: 25
           example: 1234-123456789
         phoneExtension:
-          description: >-
-            Specify contact phone extension. Maximum length is 6. This field is
-            only applicable to US, `UPS` supports up to 4 digits.
+          description: Specify contact phone extension. Maximum length is 6. This field is only applicable to US, `UPS` supports up to 4 digits.
           type: string
           maxLength: 6
           example: 1234
@@ -4981,9 +4903,8 @@ components:
       type: object
       properties:
         countryCode:
-          description: >-
-            This is the two-letter country code. The difference between each
-            carrier is as follows.
+          description: |-
+            This is the two-letter country code. The difference between each carrier is as follows.
 
              > **UPS** : Required when paymentType is THIRD_PARTY.
           type: string
@@ -4992,8 +4913,7 @@ components:
           example: GB
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
         stateOrProvinceCode:
           description: |-
             This is a placeholder for state or province code.
@@ -5011,45 +4931,39 @@ components:
           maxLength: 35
           example: 155 COLLECTION TOWN
         zipCode:
-          description: >-
-            This is the postal code. Validity check exists. The difference
-            between each carrier is as follows.
+          description: |-
+            This is the postal code. Validity check exists. The difference between each carrier is as follows.
 
              > **UPS** : Required when paymentType is THIRD_PARTY or RECIPIENT.
           type: string
           maxLength: 10
           example: SL7 1TB
         streetLine1:
-          description: >-
-            This is the combination of number, street name, etc. Maximum length
-            per line is 35.
+          description: |-
+            This is the combination of number, street name, etc. Maximum length per line is 35.
 
              > **Note:** This field is only applicable if the carrier is FedEx.
           type: string
           maxLength: 35
           example: 155 COLLECTION STREET 1
         streetLine2:
-          description: >-
-            This is the combination of number, street name, etc. Maximum length
-            per line is 35. 
+          description: |-
+            This is the combination of number, street name, etc. Maximum length per line is 35. 
 
              > **Note:** This field is only applicable if the carrier is FedEx.
           type: string
           maxLength: 35
           example: TEST
         streetLine3:
-          description: >-
-            This is the combination of number, street name, etc. Maximum length
-            per line is 35.
+          description: |-
+            This is the combination of number, street name, etc. Maximum length per line is 35.
 
              > **Note:** This field is only applicable if the carrier is FedEx.
           type: string
           maxLength: 35
           example: TEST3
         addressType:
-          description: >-
-            Indicate this address type, Only `RESIDENTIAL` means residential
-            (private).
+          description: Indicate this address type, Only `RESIDENTIAL` means residential (private).
           type: string
           enum:
             - RESIDENTIAL
@@ -5060,22 +4974,17 @@ components:
       type: object
       properties:
         contact:
-          description: >-
-            This is detailed information on physical location. This field is
-            only applicable if the carrier is FedEx.
+          description: This is detailed information on physical location. This field is only applicable if the carrier is FedEx.
           allOf:
             - $ref: '#/components/schemas/payor_contact'
         address:
-          description: >-
-            Indicate the contact details for this shipment. Required when the
-            carrier is UPS and the paymentType is THIRD_PARTY or RECIPIENT.
+          description: Indicate the contact details for this shipment. Required when the carrier is UPS and the paymentType is THIRD_PARTY or RECIPIENT.
           allOf:
             - $ref: '#/components/schemas/payor_address'
         accountNumber:
           type: string
-          description: >-
-            This field is used to bill shipping costs to a third party. The
-            difference between each carrier is as follows.
+          description: |-
+            This field is used to bill shipping costs to a third party. The difference between each carrier is as follows.
 
              > **UPS**: The number of digits must be 6.
       required:
@@ -5098,9 +5007,8 @@ components:
           type: object
           allOf:
             - $ref: '#/components/schemas/payor'
-          description: >-
-            Payor is mandatory when the paymentType is `RECIPIENT`,
-            `THIRD_PARTY` or `COLLECT`.
+          description: |-
+            Payor is mandatory when the paymentType is `RECIPIENT`, `THIRD_PARTY` or `COLLECT`.
 
              > **Note：**
                > - For the paymentType `RECIPIENT`, `THIRD_PARTY`, and `COLLECT`, the accountNumber is mandatory for FedEx in the United States.
@@ -5117,10 +5025,8 @@ components:
           maxLength: 35
           example: 1 Collection Point Name (Test 1)
         phoneNumber:
-          description: >-
-            The phone number of a contact person at this address. The format of
-            this phone number varies depending on the country. The difference
-            between each carrier is as follows.
+          description: |-
+            The phone number of a contact person at this address. The format of this phone number varies depending on the country. The difference between each carrier is as follows.
 
              > - **FedEx** : Required, Minimum length is 10 and supports maximum of 15 for certain countries using longer phone numbers.
              >   Note: For US and CA, a phone number must have exactly 10 digits, plus an optional leading country code of '1' or '+1'. Example: 918xxxxx890
@@ -5129,9 +5035,7 @@ components:
           maxLength: 25
           example: 1234-123456789
         phoneExtension:
-          description: >-
-            Specify contact phone extension. Maximum length is 6. This field is
-            only applicable to US, `UPS` supports up to 4 digits.
+          description: Specify contact phone extension. Maximum length is 6. This field is only applicable to US, `UPS` supports up to 4 digits.
           type: string
           maxLength: 6
           example: 1234
@@ -5158,12 +5062,9 @@ components:
           example: GB
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html
         stateOrProvinceCode:
-          description: >-
-            This is a placeholder for state or province code. Required when used
-            for US.
+          description: This is a placeholder for state or province code. Required when used for US.
           type: string
           maxLength: 35
           example: TEST
@@ -5173,39 +5074,30 @@ components:
           maxLength: 35
           example: 155 COLLECTION TOWN
         zipCode:
-          description: >-
-            This is the postal code. Validity check exists. The difference
-            between each carrier is as follows.
+          description: |-
+            This is the postal code. Validity check exists. The difference between each carrier is as follows.
 
              > - **UPS** : Support 5 or 9 bits.
           type: string
           maxLength: 10
           example: SL7 1TB
         streetLine1:
-          description: >-
-            This is the combination of number, street name, etc. Maximum length
-            per line is 35.
+          description: This is the combination of number, street name, etc. Maximum length per line is 35.
           type: string
           maxLength: 35
           example: 155 COLLECTION STREET 1
         streetLine2:
-          description: >-
-            This is the combination of number, street name, etc. Maximum length
-            per line is 35.
+          description: This is the combination of number, street name, etc. Maximum length per line is 35.
           type: string
           maxLength: 35
           example: TEST
         streetLine3:
-          description: >-
-            This is the combination of number, street name, etc. Maximum length
-            per line is 35.
+          description: This is the combination of number, street name, etc. Maximum length per line is 35.
           type: string
           maxLength: 35
           example: TEST3
         addressType:
-          description: >-
-            Indicate this address type, Only `RESIDENTIAL` means residential
-            (private).
+          description: Indicate this address type, Only `RESIDENTIAL` means residential (private).
           type: string
           enum:
             - RESIDENTIAL
@@ -5351,9 +5243,7 @@ components:
       type: object
       properties:
         imageType:
-          description: >-
-            Specify the image format used for a shipping document. The label
-            size always A6.
+          description: Specify the image format used for a shipping document. The label size always A6.
           type: string
           enum:
             - PDF
@@ -5370,9 +5260,7 @@ components:
           INTERMEC: '#/components/schemas/gls_intermec'
           DATAMAX: '#/components/schemas/gls_datamax'
           TOSHIBA: '#/components/schemas/gls_toshiba'
-      description: >-
-        These are label specification details includes the image type, printer
-        format, and label stock for label.
+      description: These are label specification details includes the image type, printer format, and label stock for label.
       properties:
         imageType:
           description: Specify the image format used for a shipping document.
@@ -5504,9 +5392,7 @@ components:
           ZPL: '#/components/schemas/dpd_printer'
       properties:
         imageType:
-          description: >-
-            Specify the image format used for a shipping document. A7 only
-            prints return labels.
+          description: Specify the image format used for a shipping document. A7 only prints return labels.
           type: string
           enum:
             - PDF
@@ -5620,9 +5506,7 @@ components:
         - type: object
     ups_printer:
       type: object
-      description: >-
-        Indicate the label stock type used. IN_4_6 means 4*6 inches. IN_4_8
-        means 4*8 inches.
+      description: Indicate the label stock type used. IN_4_6 means 4*6 inches. IN_4_8 means 4*8 inches.
       allOf:
         - $ref: '#/components/schemas/LabelSpecification_ups'
         - type: object
@@ -5643,42 +5527,31 @@ components:
         totalPackageCount:
           type: number
           default: 1
-          description: >-
-            For an Multiple-Piece Shipping, this is the total number of packages
-            in the shipment.Applicable for parent shipment for one label at a
-            time shipments.
+          description: For an Multiple-Piece Shipping, this is the total number of packages in the shipment.Applicable for parent shipment for one label at a time shipments.
           example: 25
         masterTrackingNumber:
           type: string
-          description: >-
-            This is the number associated with the package that is used to track
-            it.For child shipment of an oneLabelAtATime  shipments,this should
-            be same as the masterTrackingNumber of the parent shipment.
+          description: |-
+            This is the number associated with the package that is used to track it.For child shipment of an oneLabelAtATime  shipments,this should be same as the masterTrackingNumber of the parent shipment.
 
              > **Note:** When the associated masterTrackingNumber is specified, it is only valid when oneLabelAtATime is true.
           example: 176XXXXXXXXX
         oneLabelAtATime:
           type: boolean
           default: false
-          description: >-
-            This flag is used to specify if the shipment is singleshot
-            Multiple-Piece Shipping or one Label at a time,  piece by piece
-            shipment. Default is false. If true, one label at a time is
-            processed.
+          description: |-
+            This flag is used to specify if the shipment is singleshot Multiple-Piece Shipping or one Label at a time,  piece by piece shipment. Default is false. If true, one label at a time is processed.
 
              > **Note:** When this is true, the number of `itemLines` can only be 1.
     special_service:
       type: object
-      description: >-
-        These are special services that are available at the package level for
-        some or all service types.
+      description: These are special services that are available at the package level for some or all service types.
       properties:
         specialServiceTypes:
           description: Indicate the types of special services requested for the shipment.
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping/dangerous.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping/dangerous.html
           type: array
           items:
             type: string
@@ -5697,16 +5570,14 @@ components:
                 description: click here to see Package Special Service Types
                 externalDocs:
                   description: Find more info here
-                  url: >-
-                    https://platform.gigacloudlogistics.com/docs/guide/shipping/dangerous.html
+                  url: https://platform.gigacloudlogistics.com/docs/guide/shipping/dangerous.html
                 type: string
                 example: age
               value:
                 description: click here to see Package Special Service Types
                 externalDocs:
                   description: Find more info here
-                  url: >-
-                    https://platform.gigacloudlogistics.com/docs/guide/shipping/dangerous.html
+                  url: https://platform.gigacloudlogistics.com/docs/guide/shipping/dangerous.html
                 type: string
                 example: '17'
             required:
@@ -5715,51 +5586,34 @@ components:
         - specialServiceTypes
     CustomerReference:
       type: object
-      description: >-
-        Custom messages to print on the shipping label for the package. These
-        are typically used to print invoice numbers, product numbers, or other
-        internal reference numbers. Not all carriers support label messages. The
-        number of lines and the maximum length of each line also varies by
-        carrier.
+      description: Custom messages to print on the shipping label for the package. These are typically used to print invoice numbers, product numbers, or other internal reference numbers. Not all carriers support label messages. The number of lines and the maximum length of each line also varies by carrier.
       properties:
         ref1:
           type: string
-          description: >-
-            Refer to field 1, there are differences between various logistics
-            companies, see the external link for details.
+          description: Refer to field 1, there are differences between various logistics companies, see the external link for details.
           example: RB1-UB-20220221-18853
         ref2:
           type: string
-          description: >-
-            Refer to field 2, there are differences between various logistics
-            companies, see the external link for details.
+          description: Refer to field 2, there are differences between various logistics companies, see the external link for details.
           example: W44616989
         ref3:
           type: string
-          description: >-
-            Refer to field 3, there are differences between various logistics
-            companies, see the external link for details.
+          description: Refer to field 3, there are differences between various logistics companies, see the external link for details.
           example: W44616989
         ref4:
           type: string
-          description: >-
-            Refer to field 4, there are differences between various logistics
-            companies, see the external link for details.
+          description: Refer to field 4, there are differences between various logistics companies, see the external link for details.
           example: W44616989
         ref5:
           type: string
-          description: >-
-            Refer to field 5, there are differences between various logistics
-            companies, see the external link for details.
+          description: Refer to field 5, there are differences between various logistics companies, see the external link for details.
           example: W44616989
     ItemLine:
       type: object
       properties:
         itemTransactionId:
-          description: >-
-            This element allows you to assign a unique identifier to your
-            package. This element is also returned in the reply and helps you
-            match the request to the reply.
+          description: |-
+            This element allows you to assign a unique identifier to your package. This element is also returned in the reply and helps you match the request to the reply.
 
              > **Note:** The itemTransactionId is consistent with the business unique identifier used in the interface for getGigaTrackNumberBatch API, which will affect the uniqueness of giga tracking numbers.
           type: string
@@ -5768,9 +5622,8 @@ components:
           example: test-xxxx-xxxxxxxx
         sequenceNumber:
           type: number
-          description: >-
-            Used only with individual packages as a unique identifier of each
-            requested package. 
+          description: |-
+            Used only with individual packages as a unique identifier of each requested package. 
 
              > - Required for Multiple-Piece Shipping.
              > - The sequenceNumber for master package must be equal to 1 in case of Multiple-Piece Shipping.
@@ -5780,14 +5633,10 @@ components:
         packageCode:
           type: string
           default: CUSTOM_PACKAGE
-          description: >-
-            The package type, such as `THICK_ENVELOPE`, `SMALL_FLAT_RATE_BOX`,
-            `LARGE_PACKAGE`, etc. The code `CUSTOM_PACKAGE` indicates a custom
-            or unknown package type. current version is not used.
+          description: The package type, such as `THICK_ENVELOPE`, `SMALL_FLAT_RATE_BOX`, `LARGE_PACKAGE`, etc. The code `CUSTOM_PACKAGE` indicates a custom or unknown package type. current version is not used.
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/other/guide-to-reading.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/other/guide-to-reading.html
         itemCode:
           description: sku
           type: string
@@ -5799,8 +5648,7 @@ components:
           description: These are the package weight details.
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping/size-and-weight.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping/size-and-weight.html
         dimensions:
           allOf:
             - $ref: '#/components/schemas/Dimensions'
@@ -5813,15 +5661,10 @@ components:
              > **Note:** Required if current carrier is WHISTL, FedEx.
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping/size-and-weight.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping/size-and-weight.html
         declaredInfo:
           type: object
-          description: >-
-            This is the Declared Value of any shipment.This is including, but
-            not limited to any loss, damage, delay, misdelivery, any failure to
-            provide information, or misdelivery of information related to the
-            Shipment.
+          description: This is the Declared Value of any shipment.This is including, but not limited to any loss, damage, delay, misdelivery, any failure to provide information, or misdelivery of information related to the Shipment.
           properties:
             currency:
               type: string
@@ -5837,21 +5680,16 @@ components:
               description: The monetary amount, in the specified currency.
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping/declared-Info.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping/declared-Info.html
         specialService:
           allOf:
             - $ref: '#/components/schemas/special_service'
         customerReference:
           allOf:
             - $ref: '#/components/schemas/CustomerReference'
-          description: >-
-            This is a customer reference type. The value specified here for the
-            element is printed on the Commercial Invoice only for tracking and
-            label information.
+          description: This is a customer reference type. The value specified here for the element is printed on the Commercial Invoice only for tracking and label information.
           externalDocs:
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping-labels/custom-label-messages.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping-labels/custom-label-messages.html
             description: Click to view customer reference limit
       required:
         - itemTransactionId
@@ -5868,9 +5706,8 @@ components:
           enum:
             - SHIPPER
             - RECIPIENT
-          description: >
-            The taxable entity type for this tax item. Valid values include the
-            following.
+          description: |
+            The taxable entity type for this tax item. Valid values include the following.
 
              | Value     | Description 
              |---------|----------------
@@ -5903,10 +5740,7 @@ components:
              |`VOEC`  | The tax identifier is a Norwegian VAT On E-Commerce(VOEC).
         issuingAuthority:
           type: string
-          description: >-
-            The authority that issued this tax. This must be a valid 2 character
-            [country
-            code](https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html).
+          description: The authority that issued this tax. This must be a valid 2 character [country code](https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html).
         value:
           type: string
           description: The value of the identifier
@@ -5936,9 +5770,7 @@ components:
           example: item detailed description
         quantity:
           type: integer
-          description: >-
-            The quantity of this item in the shipment. Minimum length is 1,
-            Maximum length is 99999.
+          description: The quantity of this item in the shipment. Minimum length is 1, Maximum length is 99999.
           example: 1
         value:
           type: object
@@ -5949,16 +5781,11 @@ components:
             amount:
               type: number
               format: double
-              description: >-
-                The monetary amount, in the specified currency. Minimum length
-                is 0.01, Maximum length is 9999999.99.
+              description: The monetary amount, in the specified currency. Minimum length is 0.01, Maximum length is 9999999.99.
               example: 5.3
             currency:
               type: string
-              description: >-
-                The currencies that are supported by ShipEngine are the ones
-                that specified by ISO 4217:
-                https://www.iso.org/iso-4217-currency-codes.html
+              description: 'The currencies that are supported by ShipEngine are the ones that specified by ISO 4217: https://www.iso.org/iso-4217-currency-codes.html'
               example: EUR
         harmonizedTariffCode:
           type: string
@@ -5970,21 +5797,15 @@ components:
           example: UK
         fabricContent:
           type: string
-          description: >-
-            Description of the product fabric being shipped. Maximum length is
-            200.
+          description: Description of the product fabric being shipped. Maximum length is 200.
           example: Woven 100% silk
         weight:
           allOf:
             - $ref: '#/components/schemas/Weight'
-          description: >-
-            The unit weight of the customs items. value Minimum length is 0.01,
-            Maximum length is 9999999.99.
+          description: The unit weight of the customs items. value Minimum length is 0.01, Maximum length is 9999999.99.
         sku:
           type: string
-          description: >-
-            The SKU (Stock Keeping Unit) of the customs item. Maximum length is
-            255.
+          description: The SKU (Stock Keeping Unit) of the customs item. Maximum length is 255.
           example: SKU-TEST-001
         skuDescription:
           type: string
@@ -6002,9 +5823,7 @@ components:
             - gift
             - returned_goods
             - sample
-          description: >-
-            The type of contents in this shipment. This may impact import duties
-            or customs treatment.
+          description: The type of contents in this shipment. This may impact import duties or customs treatment.
         nonDelivery:
           type: string
           default: return_to_sender
@@ -6014,9 +5833,8 @@ components:
           description: Indicates what to do if a package is unable to be delivered.
         customsItems:
           type: array
-          description: >-
-            Customs declarations for each item in the shipment. The difference
-            between each carrier is as follows.
+          description: |-
+            Customs declarations for each item in the shipment. The difference between each carrier is as follows.
 
              > - **DPD_UK** : Required.
           items:
@@ -6031,21 +5849,16 @@ components:
           minLength: 1
           example: GLSxxxxxxxxxx
         serviceType:
-          description: >-
-            The carrier service used to ship the package, such as
-            `FEDEX_GROUND`, etc.
+          description: The carrier service used to ship the package, such as `FEDEX_GROUND`, etc.
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/guides/list-carrier-service.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/guides/list-carrier-service.html
           type: string
         shipper:
           allOf:
             - $ref: '#/components/schemas/shipper'
-          description: >-
-            The shipment's origin address. If you frequently ship from the same 
-            , consider creating a warehouse. Then you can simply specify the
-            `warehouseId` rather than the complete address each time.
+          description: |-
+            The shipment's origin address. If you frequently ship from the same  , consider creating a warehouse. Then you can simply specify the `warehouseId` rather than the complete address each time.
 
              > **Note:** Either `warehouseId` or `shipper` must be specified.However, for some carriers, there is no need to fill in shipper information which is maintained in the carrier‘s management system. For example: EVRI, WHISTL.
         recipient:
@@ -6053,10 +5866,8 @@ components:
           allOf:
             - $ref: '#/components/schemas/recipient'
         paymentOption:
-          description: >-
-            Specifies the payment details specifying the method and means of
-            payment to carrier for providing shipping services. The difference
-            between each carrier is as follows.
+          description: |-
+            Specifies the payment details specifying the method and means of payment to carrier for providing shipping services. The difference between each carrier is as follows.
 
              > - **FedEx** : Required.
              > - **UPS** : Required.
@@ -6067,16 +5878,10 @@ components:
           default: null
           allOf:
             - $ref: '#/components/schemas/gg_id'
-          description: >-
-            The
-            [warehouse](https://platform.gigacloudlogistics.com/docs/guide/other/guide-to-reading.html)
-            that the shipment is being shipped from. 
+          description: 'The [warehouse](https://platform.gigacloudlogistics.com/docs/guide/other/guide-to-reading.html) that the shipment is being shipped from. '
         returnAddress:
           type: object
-          description: >-
-            The return address for this shipment. European logistics is not
-            applicable, if there is a return, it will be returned to the
-            shipping address.
+          description: The return address for this shipment. European logistics is not applicable, if there is a return, it will be returned to the shipping address.
           allOf:
             - $ref: '#/components/schemas/returnInfo'
         signatureOption:
@@ -6098,14 +5903,11 @@ components:
             - $ref: '#/components/schemas/LabelSpecification_dpd_uk'
             - $ref: '#/components/schemas/LabelSpecification_ups'
           externalDocs:
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping-labels/label-description.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping-labels/label-description.html
             description: Find more info here
         multiplePieceShipping:
           type: object
-          description: >-
-            In the case of Multiple-Piece Shipping, Indicates the tracking
-            details of the package. Only applicable if the carrier is FedEx.
+          description: In the case of Multiple-Piece Shipping, Indicates the tracking details of the package. Only applicable if the carrier is FedEx.
           oneOf:
             - $ref: '#/components/schemas/mps_fedex'
         itemLines:
@@ -6127,9 +5929,8 @@ components:
             allOf:
               - $ref: '#/components/schemas/tax_indentifiers'
         customs:
-          description: >-
-            Customs information. This is usually only needed for international
-            shipments. The difference between each carrier is as follows.
+          description: |-
+            Customs information. This is usually only needed for international shipments. The difference between each carrier is as follows.
 
              > - **DPD_UK** : Required.
           allOf:
@@ -6151,9 +5952,7 @@ components:
             - HAZMAT_LABEL
           example: LABEL
         imageType:
-          description: >-
-            Format of the label. For requests, please use get service to see
-            available formats
+          description: Format of the label. For requests, please use get service to see available formats
           type: string
           example: pdf
         fileUrl:
@@ -6164,10 +5963,7 @@ components:
           type: string
           example: https://XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
         fileBase64:
-          description: >-
-            Base64 string representing label data. Decode this from base64 to
-            get your label in the right encoding. E.g. a png label decoded from
-            base64 and saved as a .png file will work as a .png image
+          description: Base64 string representing label data. Decode this from base64 to get your label in the right encoding. E.g. a png label decoded from base64 and saved as a .png file will work as a .png image
           type: string
           example: ...
       required:
@@ -6179,9 +5975,7 @@ components:
       type: object
       properties:
         itemTransactionId:
-          description: >-
-            This element has a unique identifier added in your request, helps
-            you match the request to the reply.
+          description: This element has a unique identifier added in your request, helps you match the request to the reply.
           type: string
           example: test-xxxx-xxxxxxxx
         itemCode:
@@ -6190,33 +5984,23 @@ components:
           minLength: 1
           example: test
         gigaTrackingNumber:
-          description: >-
-            The GIGA tracking number for the package. A string that uniquely
-            identifies the shipment
+          description: The GIGA tracking number for the package. A string that uniquely identifies the shipment
           type: string
           minLength: 1
           example: XXXXXXXXXXXXXXXXXXX
         trackingNumber:
-          description: >-
-            The tracking number for the package. The format depends on the
-            carrier.
+          description: The tracking number for the package. The format depends on the carrier.
           type: string
           minLength: 1
           example: JDXXXXXXXXXXXXXXXXX
         masterTrackingNumber:
-          description: >-
-            This is a master tracking number for the shipment. The format
-            depends on the carrier.
+          description: This is a master tracking number for the shipment. The format depends on the carrier.
           type: string
           minLength: 1
           example: JDXXXXXXXXXXXXXXXXX
         declaredInfo:
           type: object
-          description: >-
-            This is the Declared Value of any shipment.This is including, but
-            not limited to any loss, damage, delay, misdelivery, any failure to
-            provide information, or misdelivery of information related to the
-            Shipment.
+          description: This is the Declared Value of any shipment.This is including, but not limited to any loss, damage, delay, misdelivery, any failure to provide information, or misdelivery of information related to the Shipment.
           properties:
             currency:
               type: string
@@ -6236,16 +6020,10 @@ components:
         customerReference:
           allOf:
             - $ref: '#/components/schemas/CustomerReference'
-          description: >-
-            This is a customer reference type. The value specified here for the
-            element is printed on the Commercial Invoice only for tracking and
-            label information.
+          description: This is a customer reference type. The value specified here for the element is printed on the Commercial Invoice only for tracking and label information.
           externalDocs:
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping-labels/custom-label-messages.html
-            description: >-
-              [Click to view customer reference
-              limit](https://platform.gigacloudlogistics.com/docs/guide/shipping-labels/custom-label-messages.html)
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping-labels/custom-label-messages.html
+            description: '[Click to view customer reference limit](https://platform.gigacloudlogistics.com/docs/guide/shipping-labels/custom-label-messages.html)'
         packageDocuments:
           description: These are package documents returned in the response.
           type: array
@@ -6282,18 +6060,13 @@ components:
             - EVRI
           example: FedEx
         serviceType:
-          description: >-
-            The carrier service used to ship the package, such as
-            `FEDEX_GROUND`, etc.
+          description: The carrier service used to ship the package, such as `FEDEX_GROUND`, etc.
           externalDocs:
             description: Find more info here
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/shipping/specify-carrier-service.html
+            url: https://platform.gigacloudlogistics.com/docs/guide/shipping/specify-carrier-service.html
           type: string
         paymentOption:
-          description: >-
-            Specifies the payment details specifying the method and means of
-            payment to carrier for providing shipping services.
+          description: Specifies the payment details specifying the method and means of payment to carrier for providing shipping services.
           allOf:
             - $ref: '#/components/schemas/payment_options'
         signatureOption:
@@ -6349,9 +6122,7 @@ components:
       type: object
       properties:
         itemTransactionId:
-          description: >-
-            This element has a unique identifier added in your request, helps
-            you match the request to the reply.
+          description: This element has a unique identifier added in your request, helps you match the request to the reply.
           type: string
           example: test-xxxx-xxxxxxxx
         code:
@@ -6416,9 +6187,7 @@ components:
           description: The account number (account value) associated with the shipment.
         trackingNumber:
           type: string
-          description: >-
-            This is an unique number assigned by FedEx to the packages for
-            tracking.<br/> Example: `794953555571`
+          description: 'This is an unique number assigned by FedEx to the packages for tracking.<br/> Example: `794953555571`'
           example: '794953555571'
       required:
         - accountNumber
@@ -6427,16 +6196,11 @@ components:
       type: object
       properties:
         cancelledShipment:
-          description: >-
-            Indicates whether the shipment has been cancelled or not. If the
-            value is True, then it indicates that the shipment has been
-            cancelled.
+          description: Indicates whether the shipment has been cancelled or not. If the value is True, then it indicates that the shipment has been cancelled.
           type: boolean
           example: false
         message:
-          description: >-
-            The success message generated during cancellation request for
-            Shipment.
+          description: The success message generated during cancellation request for Shipment.
           type: string
       required:
         - cancelledShipment
@@ -6460,9 +6224,7 @@ components:
       properties:
         gigaTrackingNumber:
           type: string
-          description: >-
-            The GIGA tracking number for the package. A string that uniquely
-            identifies the shipment.<br/> Example: `GCL125635847`
+          description: 'The GIGA tracking number for the package. A string that uniquely identifies the shipment.<br/> Example: `GCL125635847`'
           example: GCL125635847
       required:
         - gigaTrackingNumber
@@ -6482,9 +6244,7 @@ components:
       properties:
         name:
           type: string
-          description: >-
-            The name of a contact person at this address. This field may be set
-            instead of - or in addition to - the `companyName` field.
+          description: The name of a contact person at this address. This field may be set instead of - or in addition to - the `companyName` field.
           minLength: 1
           maxLength: 35
           example: CA1
@@ -6492,9 +6252,7 @@ components:
           type: string
           minLength: 1
           maxLength: 25
-          description: >-
-            The phone number of a contact person at this address. The format of
-            this phone number varies depending on the country.
+          description: The phone number of a contact person at this address. The format of this phone number varies depending on the country.
           example: 123456789
         phoneExtension:
           type: string
@@ -6504,9 +6262,7 @@ components:
         companyName:
           type: string
           maxLength: 35
-          description: >-
-            If this is a business address, then the company name should be
-            specified here.
+          description: If this is a business address, then the company name should be specified here.
           example: John Doe
         email:
           type: string
@@ -6517,23 +6273,17 @@ components:
           type: string
           minLength: 1
           maxLength: 35
-          description: >-
-            The first line of the street address. For some addresses, this may
-            be the only line. Other addresses may require 2 or 3 lines.
+          description: The first line of the street address. For some addresses, this may be the only line. Other addresses may require 2 or 3 lines.
           example: 1999 Bishop Grandin Blvd.
         addressLine2:
           type: string
           maxLength: 35
-          description: >-
-            The second line of the street address.  For some addresses, this
-            line may not be needed.
+          description: The second line of the street address.  For some addresses, this line may not be needed.
           example: Unit 408.
         addressLine3:
           type: string
           maxLength: 35
-          description: >-
-            The third line of the street address.  For some addresses, this line
-            may not be needed.
+          description: The third line of the street address.  For some addresses, this line may not be needed.
           example: 'Building #7'
         cityLocality:
           type: string
@@ -6545,10 +6295,8 @@ components:
           type: string
           minLength: 1
           maxLength: 35
-          description: >-
-            The state or province.  For some countries (including the U.S.) only
-            abbreviations are allowed.  Other countries allow the full name or
-            abbreviation.
+          description: |-
+            The state or province.  For some countries (including the U.S.) only abbreviations are allowed.  Other countries allow the full name or abbreviation.
 
              > **Note:** Required when country is `US`
           example: Manitoba
@@ -6562,9 +6310,7 @@ components:
           type: string
           minLength: 2
           maxLength: 2
-          description: >-
-            The two-letter [country
-            code](https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html)
+          description: The two-letter [country code](https://platform.gigacloudlogistics.com/docs/guide/api-reference/country-code.html)
           example: US
         addressResidentialIndicator:
           type: boolean
@@ -6696,15 +6442,11 @@ components:
           example: true
           default: true
         gigaTrackingNumber:
-          description: >-
-            The GIGA tracking number for the package. A string that uniquely
-            identifies the shipment.
+          description: The GIGA tracking number for the package. A string that uniquely identifies the shipment.
           type: string
           example: GCL1234567890120
         fileInfo:
-          description: >-
-            URL and type of shipping document/label. key indicates the type,
-            currently `1` indicates POD, value is the url path.
+          description: URL and type of shipping document/label. key indicates the type, currently `1` indicates POD, value is the url path.
           type: object
           additionalProperties:
             type: string
@@ -6721,71 +6463,48 @@ components:
       type: object
       properties:
         bizUniqId:
-          description: >-
-            Business unique identifier, when the logistics is regular express
-            delivery, affects the uniqueness of the GIGA waybill number. This
-            field is mandatory when `gigaTrackingNumber` is empty.
+          description: |-
+            Business unique identifier, when the logistics is regular express delivery, affects the uniqueness of the GIGA waybill number. This field is mandatory when `gigaTrackingNumber` is empty.
 
              >**Note:** Consistent with the dispatch unique identifier `itemTransactionId` in the [Create Shipments](#tag/Shipments/operation/createShipment) interface, used to determine the uniqueness of the GIGA waybill number.  If the `bizUniqId` conveyed through the transaction registration interface matches the `itemTransactionId` during the purchase transaction,  then the same GIGA waybill number as returned by the purchase transaction interface will be retrieved from the transaction history interface.
           type: string
           maxLength: 50
           example: item001
         carrierKey:
-          description: >-
-            The unique code of the transporter generated by DRPTool, This field
-            is mandatory when `gigaTrackingNumber` is empty.
+          description: The unique code of the transporter generated by DRPTool, This field is mandatory when `gigaTrackingNumber` is empty.
           type: string
           example: carrier_001
         trackingNumber:
-          description: >-
-            Official website waybill number, This field is mandatory when
-            `gigaTrackingNumber` is empty.
+          description: Official website waybill number, This field is mandatory when `gigaTrackingNumber` is empty.
           type: string
           example: X145632589
         gigaTrackingNumber:
-          description: >-
-            GIGA waybill number is generated when purchasing through the
-            logistics center. This field can replace the combination of
-            `carrierKey`, `trackingNumber`,  and `bizUniqId`. When all are
-            filled, gigaTrackingNumber takes precedence.
+          description: GIGA waybill number is generated when purchasing through the logistics center. This field can replace the combination of `carrierKey`, `trackingNumber`,  and `bizUniqId`. When all are filled, gigaTrackingNumber takes precedence.
           type: string
           example: GCL3354248412307
         tag:
           type: string
-          description: >-
-            Custom label, with a maximum limit of 65535 bytes, can be filled
-            with notes, descriptions, data identifiers, and other information.
+          description: |-
+            Custom label, with a maximum limit of 65535 bytes, can be filled with notes, descriptions, data identifiers, and other information.
 
              >**Note:** When using `tag` to generate an Excel statistical file, please ensure that the data format is correct. In this context, the **columnName** value corresponds to the Excel column heading. **sort** specifies Excel column sorting. **value** displays data in a table. Be careful to avoid duplicate **sort** values, as duplicates will result in only one column being generated.
-          example: >-
-            [{"sort":0,"columnName":"运单号","value":"test001"},{"sort":1,"columnName":"物流公司","value":"test"},{"sort":2,"columnName":"订单号","value":"t2001"},{"sort":3,"columnName":"备注","value":"test"},{"sort":4,"columnName":"店铺","value":"t4"},{"sort":9,"columnName":"发货日期","value":"2023-05-26
-            19:30:25"}]
+          example: '[{"sort":0,"columnName":"运单号","value":"test001"},{"sort":1,"columnName":"物流公司","value":"test"},{"sort":2,"columnName":"订单号","value":"t2001"},{"sort":3,"columnName":"备注","value":"test"},{"sort":4,"columnName":"店铺","value":"t4"},{"sort":9,"columnName":"发货日期","value":"2023-05-26 19:30:25"}]'
         param:
           example: xxxx
           type: string
           maxLength: 10
-          description: >-
-            Additional tracking parameters for the logistics tracking number
-            (some carriers with specific requirements might need postal code or
-            order date to query package information).
+          description: Additional tracking parameters for the logistics tracking number (some carriers with specific requirements might need postal code or order date to query package information).
           externalDocs:
-            url: >-
-              https://platform.gigacloudlogistics.com/docs/guide/track/track-package.html#considerations
+            url: https://platform.gigacloudlogistics.com/docs/guide/track/track-package.html#considerations
             description: Click to view rules
         shipFrom:
           type: string
-          description: >-
-            Place of origin, generated in the order of city, state, and country.
-            Subsequent logistics centers will update and correct based on the
-            transaction history information.
+          description: Place of origin, generated in the order of city, state, and country. Subsequent logistics centers will update and correct based on the transaction history information.
           maxLength: 50
           example: xx,xx,xx
         shipTo:
           type: string
-          description: >-
-            Destination, generated in the order of city, state, and country.
-            Subsequent logistics centers will update and correct based on the
-            transaction history information.
+          description: Destination, generated in the order of city, state, and country. Subsequent logistics centers will update and correct based on the transaction history information.
           maxLength: 50
           example: xx,xx,xx
     register_reject_item:
@@ -6849,9 +6568,7 @@ components:
           type: object
           properties:
             rejected:
-              description: >-
-                The response result for the exception handling part in the
-                request.
+              description: The response result for the exception handling part in the request.
               type: array
               items:
                 allOf:
@@ -6891,9 +6608,7 @@ components:
           type: object
           properties:
             rejected:
-              description: >-
-                The response result for the exception handling part in the
-                request.
+              description: The response result for the exception handling part in the request.
               type: array
               items:
                 allOf:
@@ -6921,49 +6636,32 @@ components:
           type: object
           properties:
             rejected:
-              description: >-
-                The response result for the exception handling part in the
-                request.
+              description: The response result for the exception handling part in the request.
               type: array
               items:
                 allOf:
                   - $ref: '#/components/schemas/restart_reject_item'
             accepted:
-              description: >-
-                To handle a request normally, return a collection of results. If
-                there are no data satisfying the conditions, return an empty
-                collection.
+              description: To handle a request normally, return a collection of results. If there are no data satisfying the conditions, return an empty collection.
               type: array
               items:
                 type: object
                 description: The response elements for Tracking by tracking number request.
                 properties:
                   gigaTrackingNumber:
-                    description: >-
-                      The GIGA tracking number for the package. A string that
-                      uniquely identifies the shipment.
+                    description: The GIGA tracking number for the package. A string that uniquely identifies the shipment.
                     type: string
                     example: GCL1234567890120
                   param:
-                    description: >-
-                      Additional tracking parameters for the logistics tracking
-                      number (some carriers with specific requirements might
-                      need postal code or order date to query package
-                      information).
+                    description: Additional tracking parameters for the logistics tracking number (some carriers with specific requirements might need postal code or order date to query package information).
                     type: string
                     example: test123
                   tag:
-                    description: >-
-                      Custom label, with a maximum limit of 65535 bytes, can be
-                      filled with notes, descriptions, data identifiers, and
-                      other information.
+                    description: Custom label, with a maximum limit of 65535 bytes, can be filled with notes, descriptions, data identifiers, and other information.
                     type: string
                     example: custom tag
                   exceptionFlag:
-                    description: >-
-                      Mark whether this node is an exception node. `S`
-                      identifies normal nodes, and `E` identifies abnormal
-                      nodes.
+                    description: Mark whether this node is an exception node. `S` identifies normal nodes, and `E` identifies abnormal nodes.
                     type: string
                     enum:
                       - S
@@ -7010,9 +6708,8 @@ components:
                     type: string
                     example: '2023-12-01T18:15:02Z'
                   lastNodeStatusCode:
-                    description: >
-                      GIGA logistics status identification code, mapped by the
-                      logistics center. Valid values include the following.
+                    description: |
+                      GIGA logistics status identification code, mapped by the logistics center. Valid values include the following.
 
                        | Value     | Description 
                        |---------  |----------------
@@ -7025,16 +6722,11 @@ components:
                     type: number
                     example: 4
                   lastNodeStatusDescription:
-                    description: >-
-                      GIGA logistics status description, mapped by the logistics
-                      center. The value is Description in the
-                      **lastNodeStatusCode** description table.
+                    description: GIGA logistics status description, mapped by the logistics center. The value is Description in the **lastNodeStatusCode** description table.
                     type: string
                     example: IN TRANSIT
                   eventInfoVos:
-                    description: >-
-                      Logistics company scan event information for a shipment.
-                      Includes the list of events and/or scans applied.
+                    description: Logistics company scan event information for a shipment. Includes the list of events and/or scans applied.
                     type: array
                     items:
                       type: object
@@ -7053,15 +6745,11 @@ components:
                           type: string
                           example: US
                         location:
-                          description: >-
-                            Location Identification for facilities identified by
-                            an alpha numeric location code.
+                          description: Location Identification for facilities identified by an alpha numeric location code.
                           type: string
                           example: SEA
                         eventCode:
-                          description: >-
-                            Field which holds the code identifying the type of
-                            scan event.
+                          description: Field which holds the code identifying the type of scan event.
                           type: string
                           example: PU
                         eventTime:
@@ -7073,16 +6761,12 @@ components:
                           type: string
                           example: '2023-12-01T18:15:02Z'
                         eventDescription:
-                          description: >-
-                            Field which holds the text description of the scan
-                            event.
+                          description: Field which holds the text description of the scan event.
                           type: string
                           example: On the way
                         logisticsStatusCode:
-                          description: >
-                            GIGA logistics status identification code, mapped by
-                            the logistics center. Valid values include the
-                            following.
+                          description: |
+                            GIGA logistics status identification code, mapped by the logistics center. Valid values include the following.
 
                              | Value     | Description 
                              |---------  |----------------
@@ -7095,38 +6779,22 @@ components:
                           type: number
                           example: 4
                         logisticsStatusDescription:
-                          description: >-
-                            GIGA logistics status description, mapped by the
-                            logistics center. The value is Description in the
-                            **logisticsStatusCode** description table.
+                          description: GIGA logistics status description, mapped by the logistics center. The value is Description in the **logisticsStatusCode** description table.
                           type: string
                           example: IN TRANSIT
                         exceptionFlag:
-                          description: >-
-                            Mark whether this node is an exception node. `S`
-                            identifies normal nodes, and `E` identifies abnormal
-                            nodes.
+                          description: Mark whether this node is an exception node. `S` identifies normal nodes, and `E` identifies abnormal nodes.
                           type: string
                           enum:
                             - S
                             - E
                           example: S
                   daysAfterTransit:
-                    description: >-
-                      The number of days between the first event and the
-                      'Successful Signing' event. Before there is no 'Successful
-                      Signing' status, this item is always 0 and does not
-                      accumulate. After successful receipt, the number of days
-                      between receipts will be displayed.
+                    description: The number of days between the first event and the 'Successful Signing' event. Before there is no 'Successful Signing' status, this item is always 0 and does not accumulate. After successful receipt, the number of days between receipts will be displayed.
                     type: number
                     example: 3
                   daysAfterLastUpdate:
-                    description: >-
-                      The number of days between the last event and the latest
-                      synchronization success time without update, the
-                      cumulative count. Please note that when the logistics
-                      status is `DELIVERED` and has been delivered, this data is
-                      meaningless.
+                    description: The number of days between the last event and the latest synchronization success time without update, the cumulative count. Please note that when the logistics status is `DELIVERED` and has been delivered, this data is meaningless.
                     type: number
                     example: 0
                   serviceType:
@@ -7138,9 +6806,7 @@ components:
                     type: string
                     example: '2023-12-05T11:41:39+08:00'
                   lastSyncSuccessfulTime:
-                    description: >-
-                      Finally successfully synchronized the time of the
-                      logistics company.
+                    description: Finally successfully synchronized the time of the logistics company.
                     type: string
                     example: '2023-12-05T11:41:39+08:00'
                   weight:
@@ -7176,6 +6842,4 @@ components:
       required: true
       schema:
         type: string
-        description: >-
-          Example: `Bearer XXX` <br> This indicates the
-          [authorization](#tag/Authentication) token for the input request.
+        description: 'Example: `Bearer XXX` <br> This indicates the [authorization](#tag/Authentication) token for the input request.'
