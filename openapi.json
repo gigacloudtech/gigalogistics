@@ -18,6 +18,28 @@
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
+  "servers": [
+    {
+      "url": "http://sit.gateway.orsd.tech/gw",
+      "description": "Development Sandbox Server"
+    },
+    {
+      "url": "http://uat.gateway.orsd.tech/gw",
+      "description": "Sandbox Server"
+    },
+    {
+      "url": "http://outer.pre-release.hk.gateway.orsd.tech/gw",
+      "description": "Pre-Release Server"
+    },
+    {
+      "url": "https://apis.gigacloudlogistics.com",
+      "description": "Production Server"
+    },
+    {
+      "url": "http://outer.us.gateway.orsd.tech/gw",
+      "description": "US Production Server"
+    }
+  ],
   "tags": [
     {
       "name": "Authentication",
@@ -65,29 +87,7 @@
     },
     {
       "name": "Version Change History",
-      "description": "This is the list of changelogs of GIGALOGISTICS new release. You can get the detail information of each version's new features and bug solutions.\n\n### Version: 1.0.20240507 (current)\n\n### Changes\n- Add Interface  [Create Shipment Async](#tag/LTL-Shipping/operation/createShipmentAsync)\n  - See the interface description for details\n- Add Interface  [Retrieve Async Shipments Result](#tag/LTL-Shipping/operation/LTLAsyncRetrieveShipmentsResult)\n  - See the interface description for details\n- Add Interface  [Pickup Request](#tag/LTL-Shipping/operation/pickup)\n  - See the interface description for details\n---\n\n### Version: 1.0.20240315_Beta\n\n#### Changes\n- Update Interface [Validate Address](#tag/Addresses/operation/AdvcStreetLevel)\n  - The interface structure has been adjusted from individual to batch, with the addition of the `clientReferenceId` field for matching responses in batch requests. \n  - A new rate limiting policy has been implemented for this interface, allowing a maximum of **2400** transactions per minute for each carrierID.\n---\n\n### Version: 1.0.20240122\n\n#### Changes\n- Update Interface [Manual push by Tracking Number](#tag/Tracking/operation/pushTracking)\n  - Add webhook callback signature verification functionality. [Click to view details](https://platform.gigacloudlogistics.com/docs/guide/track/create-webhook.html).\n- Add the address of the **Development Sandbox Server** environment, used for internal debugging and collaboration among developers. Please note that the tokens and carrierIds for each environment are distinct. Contact us to obtain them.\n---\n\n### Version: 1.0.20240111\n\n#### Changes\n\n- [Track Document](#tag/Tracking/operation/getTrackDocument) interface parameter adjustment\n  - Adjust the interface parameter request from batch to individual parameter requests.\n- Add the address for the US Production Server environment. Please be aware that when connecting to US nodes, a different token is required. Please reach out to us for obtaining the correct one.\n---\n\n### Version: 1.0.2023122801\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n  - Update field `shipper`, `returnAddress`\n  > shipper.contact.companyName, returnAddress.contact.companyName, added maxmum 35 character limit.\n- Add Interface [Restart Tracking](#tag/Tracking/operation/restartTrackNum)\n    - See the interface description for details\n- Add Interface [History Track by Tracking Number](#tag/Tracking/operation/getHistoryTrackInfo)\n    - See the interface description for details\n- Add Interface [Manual push by Tracking Number](#tag/Tracking/operation/pushTracking)\n    - See the interface description for details\n- \n\n---\n\n### Version: 1.0.2023091402\n\n#### Changes\n\n- Add the address of the development sandbox server environment, used for internal debugging and collaboration among developers. Please note that the tokens and carrierIds for each environment are distinct. Contact us to obtain them.\n- \n\n---\n\n### Version: 1.0.2023083101_Beta\n\n#### Changes\n\n- Add Interface [Start Tracking a Package](#tag/Tracking/operation/registerTrackNum)\n    - See the interface description for details\n\n---\n\n### Version: 1.0.2023082401\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Update field `shipper`, `recipient`\n    > shipper.address.city, shipper.contact.companyName, shipper.contact.personName, recipient.address.city, \n    recipient.contact.companyName, recipient.contact.personName added minimum 3 character limit.\n\n---\n\n### Version: 1.0.2023072701\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface adjustment\n    - Update field `phoneNumber`\n    > Adjust `recipient.contact.phoneNumber` for GEL to be conditional required\n    - config timeout\n    > config connect timeout with 60s\n\n---\n\n### Version: 1.0.2023070601\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Update field `emailAddress`\n    > Adjust `recipient.contact.emailAddress` for DPD_UK to be non-required\n\n---\n\n### Version: 1.0.2023062901\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Update field `shipper`\n    > This field is optional when the logistics company is **WHISTL**.\n    > Add a description of the restrictions on this field for each logistics company.\n    - Update field `recipient`\n    > Add a description of the restrictions on this field for each logistics company.\n    - Update field `itemTransactionId`\n    > Applicable to `itemLines` object Add description information of this field.\n    - Update field `dimensions`\n    > Applicable to `itemLines` objects Required when the logistics company is **FedEx**.\n    - Update field `payor`\n    > Applicable to the payor information of the `paymentOption` fields, Adjust the description.\n    - Update field `phoneNumber`\n    > Applicable to the contact information of the `paymentOption` fields, When the logistics company removes the required verification for **FedEx**.\n    - Update field `labelSpecification`\n    > Add external link documentation for each logistics company label.\n\n---\n\n### Version: 1.0.2023060701\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Update field `stateProvince`\n    > Applicable to the address information of the `paymentOption` fields, When the logistics company removes the required verification for **FedEx**.\n    - Update field `accountNumber`\n    > Applicable to the payor information of the `paymentOption` fields, When the logistics company is **UPS**, this field must be 6 digits.\n\n---\n\n### Version: 1.0.2023052501\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Add new field `instructions`\n    > Applicable to the address information of the `shipper.address`fields, only applicable to GLS. \n    - Add new field `instructions`\n    > Applicable to the address information of the `recipient.address` fields, only applicable to DPD_DE, DPD_UK, GLS. \n\n---\n\n### Version: 1.0.2023051901\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Update field `streetLine2`\n    > Adjust `shipper.streetLine2` and `recipient.streetLine2` for DPD_DE to be non-required\n\n---\n\n### Version: 1.0.2023051601\n\n#### Changes\n\n- Adjust version number information.\n- Modify the address of the `sandbox environment` and add the address of the `pre-release environment`.\n\n---\n\n### Version: 1.0.2023051101\n\n#### Changes\n\n- Add Interface [Create Shipments asynchronously](#tag/Shipments/operation/CreateShipmentsAsync)\n    - See the interface description for details\n- Add Interface [Retrieve Async Shipments Result](#tag/Shipments/operation/AsyncRetrieveShipmentsResult)\n    - See the interface description for details\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) Interface parameter verification description adjustment\n    - Update field `phoneNumber`\n    > Modify the description of this field. When the operator is `FedEx`, add a special case description. For details, please refer to the interface document. The main scope of change `shipper`, `recipient`, `payor` objects.\n    - Update field `customerReference`\n    > Modify the restrictions of each logistics company for ref1~ref5 in this field.\n\n---\n\n### Version: 1.0.2023040301\n\n#### Changes\n\n- Add Interface [Track Document](#tag/Tracking/operation/getTrackDocument)\n    - See the interface description for details\n\n---\n\n### Version: 1.0.2023032101\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) Interface parameter verification description adjustment\n    - Update field `paymentOption`\n    > Modify the verification information when using non-`SENDER` payment when the carrier is `FedEx` or `UPS`.\n    - Added the description information of the specific verification rules of each logistics company, supplemented additional auxiliary information about fields such as `serviceType`, `weight`, `dimensions`, `declaredInfo`, etc.\n\n---\n\n### Version: 1.0.2023031401\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Add new field `streetLine3`\n    > Applicable to the address information of the `shipper`, `recipient`, `paymentOption`, and `returnAddress` fields, only applicable to FedEx, UPS. \n    - Update field `stateProvince`\n    > Applicable to the address information of the `shipper`, `recipient`, `paymentOption`, and `returnAddress` fields, Required when the carrier is FedEx, UPS, optional in other cases.\n\n- [Create Warehouse](#tag/Warehouses/operation/createWarehouse) interface parameter adjustment\n    - update field `stateProvince`\n    > Applicable to `originAddressre`, `returnAddress` field address information, only required when the country of the address is US."
-    }
-  ],
-  "servers": [
-    {
-      "url": "http://sit.gateway.orsd.tech/gw",
-      "description": "Development Sandbox Server"
-    },
-    {
-      "url": "http://uat.gateway.orsd.tech/gw",
-      "description": "Sandbox Server"
-    },
-    {
-      "url": "http://outer.pre-release.hk.gateway.orsd.tech/gw",
-      "description": "Pre-Release Server"
-    },
-    {
-      "url": "https://apis.gigacloudlogistics.com",
-      "description": "Production Server"
-    },
-    {
-      "url": "http://outer.us.gateway.orsd.tech/gw",
-      "description": "US Production Server"
+      "description": "This is the list of changelogs of GIGALOGISTICS new release. You can get the detail information of each version's new features and bug solutions.\n\n### Version: 1.0.20240709 (current)\n\n### Changes\n- Update Interface  [Create Shipments](#tag/Shipments/operation/createShipment)\n  - Update field `instructions`,`streetLine2`\n    > Switch mapping meanings between `instructions` and `streetLine2` in `shipper.address` and `recipient.address`\n  - Add field `houseNumber`\n    > Applicable to the address information of the `recipient.address` fields, only applicable to DPD_DE\n\n---\n### Version: 1.0.20240705\n\n### Changes\n- Update Interface  [Create Shipments](#tag/Shipments/operation/createShipment)\n  - The interface added support for the currency CAD.\n  - The interface req field recipient.address.stateOrProvinceCode required for CA now.\n- Update Interface  [Get Shipping Rates](#tag/Rates/operation/getShippingRates)\n  - The interface added support for the currency CAD.\n---\n\n\n### Version: 1.0.20240507\n\n### Changes\n- Add Interface  [Create Shipment Async](#tag/LTL-Shipping/operation/createShipmentAsync)\n  - See the interface description for details\n- Add Interface  [Retrieve Async Shipments Result](#tag/LTL-Shipping/operation/LTLAsyncRetrieveShipmentsResult)\n  - See the interface description for details\n- Add Interface  [Pickup Request](#tag/LTL-Shipping/operation/pickup)\n  - See the interface description for details\n---\n\n### Version: 1.0.20240315_Beta\n\n#### Changes\n- Update Interface [Validate Address](#tag/Addresses/operation/AdvcStreetLevel)\n  - The interface structure has been adjusted from individual to batch, with the addition of the `clientReferenceId` field for matching responses in batch requests. \n  - A new rate limiting policy has been implemented for this interface, allowing a maximum of **2400** transactions per minute for each carrierID.\n---\n\n### Version: 1.0.20240122\n\n#### Changes\n- Update Interface [Manual push by Tracking Number](#tag/Tracking/operation/pushTracking)\n  - Add webhook callback signature verification functionality. [Click to view details](https://platform.gigacloudlogistics.com/docs/guide/track/create-webhook.html).\n- Add the address of the **Development Sandbox Server** environment, used for internal debugging and collaboration among developers. Please note that the tokens and carrierIds for each environment are distinct. Contact us to obtain them.\n---\n\n### Version: 1.0.20240111\n\n#### Changes\n\n- [Track Document](#tag/Tracking/operation/getTrackDocument) interface parameter adjustment\n  - Adjust the interface parameter request from batch to individual parameter requests.\n- Add the address for the US Production Server environment. Please be aware that when connecting to US nodes, a different token is required. Please reach out to us for obtaining the correct one.\n---\n\n### Version: 1.0.2023122801\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n  - Update field `shipper`, `returnAddress`\n  > shipper.contact.companyName, returnAddress.contact.companyName, added maxmum 35 character limit.\n- Add Interface [Restart Tracking](#tag/Tracking/operation/restartTrackNum)\n    - See the interface description for details\n- Add Interface [History Track by Tracking Number](#tag/Tracking/operation/getHistoryTrackInfo)\n    - See the interface description for details\n- Add Interface [Manual push by Tracking Number](#tag/Tracking/operation/pushTracking)\n    - See the interface description for details\n- \n\n---\n\n### Version: 1.0.2023091402\n\n#### Changes\n\n- Add the address of the development sandbox server environment, used for internal debugging and collaboration among developers. Please note that the tokens and carrierIds for each environment are distinct. Contact us to obtain them.\n- \n\n---\n\n### Version: 1.0.2023083101_Beta\n\n#### Changes\n\n- Add Interface [Start Tracking a Package](#tag/Tracking/operation/registerTrackNum)\n    - See the interface description for details\n\n---\n\n### Version: 1.0.2023082401\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Update field `shipper`, `recipient`\n    > shipper.address.city, shipper.contact.companyName, shipper.contact.personName, recipient.address.city, \n    recipient.contact.companyName, recipient.contact.personName added minimum 3 character limit.\n\n---\n\n### Version: 1.0.2023072701\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface adjustment\n    - Update field `phoneNumber`\n    > Adjust `recipient.contact.phoneNumber` for GEL to be conditional required\n    - config timeout\n    > config connect timeout with 60s\n\n---\n\n### Version: 1.0.2023070601\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Update field `emailAddress`\n    > Adjust `recipient.contact.emailAddress` for DPD_UK to be non-required\n\n---\n\n### Version: 1.0.2023062901\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Update field `shipper`\n    > This field is optional when the logistics company is **WHISTL**.\n    > Add a description of the restrictions on this field for each logistics company.\n    - Update field `recipient`\n    > Add a description of the restrictions on this field for each logistics company.\n    - Update field `itemTransactionId`\n    > Applicable to `itemLines` object Add description information of this field.\n    - Update field `dimensions`\n    > Applicable to `itemLines` objects Required when the logistics company is **FedEx**.\n    - Update field `payor`\n    > Applicable to the payor information of the `paymentOption` fields, Adjust the description.\n    - Update field `phoneNumber`\n    > Applicable to the contact information of the `paymentOption` fields, When the logistics company removes the required verification for **FedEx**.\n    - Update field `labelSpecification`\n    > Add external link documentation for each logistics company label.\n\n---\n\n### Version: 1.0.2023060701\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Update field `stateProvince`\n    > Applicable to the address information of the `paymentOption` fields, When the logistics company removes the required verification for **FedEx**.\n    - Update field `accountNumber`\n    > Applicable to the payor information of the `paymentOption` fields, When the logistics company is **UPS**, this field must be 6 digits.\n\n---\n\n### Version: 1.0.2023052501\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Add new field `instructions`\n    > Applicable to the address information of the `shipper.address`fields, only applicable to GLS. \n    - Add new field `instructions`\n    > Applicable to the address information of the `recipient.address` fields, only applicable to DPD_DE, DPD_UK, GLS. \n\n---\n\n### Version: 1.0.2023051901\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Update field `streetLine2`\n    > Adjust `shipper.streetLine2` and `recipient.streetLine2` for DPD_DE to be non-required\n\n---\n\n### Version: 1.0.2023051601\n\n#### Changes\n\n- Adjust version number information.\n- Modify the address of the `sandbox environment` and add the address of the `pre-release environment`.\n\n---\n\n### Version: 1.0.2023051101\n\n#### Changes\n\n- Add Interface [Create Shipments asynchronously](#tag/Shipments/operation/CreateShipmentsAsync)\n    - See the interface description for details\n- Add Interface [Retrieve Async Shipments Result](#tag/Shipments/operation/AsyncRetrieveShipmentsResult)\n    - See the interface description for details\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) Interface parameter verification description adjustment\n    - Update field `phoneNumber`\n    > Modify the description of this field. When the operator is `FedEx`, add a special case description. For details, please refer to the interface document. The main scope of change `shipper`, `recipient`, `payor` objects.\n    - Update field `customerReference`\n    > Modify the restrictions of each logistics company for ref1~ref5 in this field.\n\n---\n\n### Version: 1.0.2023040301\n\n#### Changes\n\n- Add Interface [Track Document](#tag/Tracking/operation/getTrackDocument)\n    - See the interface description for details\n\n---\n\n### Version: 1.0.2023032101\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) Interface parameter verification description adjustment\n    - Update field `paymentOption`\n    > Modify the verification information when using non-`SENDER` payment when the carrier is `FedEx` or `UPS`.\n    - Added the description information of the specific verification rules of each logistics company, supplemented additional auxiliary information about fields such as `serviceType`, `weight`, `dimensions`, `declaredInfo`, etc.\n\n---\n\n### Version: 1.0.2023031401\n\n#### Changes\n\n- [Create Shipments](#tag/Shipments/operation/createShipment) interface parameter adjustment\n    - Add new field `streetLine3`\n    > Applicable to the address information of the `shipper`, `recipient`, `paymentOption`, and `returnAddress` fields, only applicable to FedEx, UPS. \n    - Update field `stateProvince`\n    > Applicable to the address information of the `shipper`, `recipient`, `paymentOption`, and `returnAddress` fields, Required when the carrier is FedEx, UPS, optional in other cases.\n\n- [Create Warehouse](#tag/Warehouses/operation/createWarehouse) interface parameter adjustment\n    - update field `stateProvince`\n    > Applicable to `originAddressre`, `returnAddress` field address information, only required when the country of the address is US."
     }
   ],
   "paths": {
@@ -4281,7 +4281,8 @@
                   "USD",
                   "EUR",
                   "JPY",
-                  "GBP"
+                  "GBP",
+                  "CAD"
                 ],
                 "description": "The currencies that are supported by GIGALOGISTICS."
               },
@@ -6356,9 +6357,9 @@
             "example": "TEST3"
           },
           "instructions": {
-            "description": "This is the address remarks, such as fill in house number.",
+            "description": "This is the address remarks.",
             "type": "string",
-            "example": "Haseneggstrasse 29"
+            "example": "comment"
           },
           "addressType": {
             "description": "Indicate this address type, Only `RESIDENTIAL` means residential (private).",
@@ -6448,7 +6449,7 @@
             }
           },
           "stateOrProvinceCode": {
-            "description": "This is a placeholder for state or province code. Required when used for US.",
+            "description": "This is a placeholder for state or province code. Required when used for US, CA.",
             "type": "string",
             "example": "TEST"
           },
@@ -6478,9 +6479,14 @@
             "example": "TEST3"
           },
           "instructions": {
-            "description": "This is the address remarks, such as fill in house number.",
+            "description": "This is the address remarks.",
             "type": "string",
-            "example": "Haseneggstrasse 29"
+            "example": "comment"
+          },
+          "houseNumber": {
+            "description": "This is the street number or house number.",
+            "type": "string",
+            "example": 12
           },
           "addressType": {
             "description": "Indicate this address type, Only `RESIDENTIAL` means residential (private).",
@@ -7539,7 +7545,8 @@
                   "USD",
                   "EUR",
                   "JPY",
-                  "GBP"
+                  "GBP",
+                  "CAD"
                 ],
                 "description": "The currencies that are supported by GIGALOGISTICS."
               },
